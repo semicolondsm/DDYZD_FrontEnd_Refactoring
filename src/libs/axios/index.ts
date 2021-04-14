@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 const instance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_BASEURL,
+    baseURL: 'https://ddyzd-api.dsmkr.com',//process.env.NEXT_PUBLIC_BASEURL,
 });
 instance.interceptors.request.use(
     function (config : AxiosRequestConfig) {
