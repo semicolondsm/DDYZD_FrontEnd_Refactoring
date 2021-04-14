@@ -1,10 +1,10 @@
 import * as S from "./style";
-import { MajorItem } from "../MajorItem";
+import { ClubItem } from "../ClubItem";
 import { MutableRefObject, useEffect, useRef, useState } from "react";
 import club from "@/src/libs/api/club";
 import { IMajorData } from "@/src/libs/intefaces/Major";
 
-export const MajorList = () => {
+export const ClubList = () => {
     const time: MutableRefObject<any> = useRef({});
     const [clubList, setClubList] = useState<IMajorData[]>([]);
 
@@ -51,7 +51,8 @@ export const MajorList = () => {
                         clubrecruitment,
                     } = value;
                     return (
-                        <MajorItem
+                        <ClubItem
+                            key={i}
                             className="majoritem"
                             max={clubList.length}
                             now={i}
