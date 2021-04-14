@@ -52,7 +52,7 @@ export const ClubList = () => {
                     } = value;
                     return (
                         <ClubItem
-                            key={i}
+                            key={clubid}
                             className="majoritem"
                             max={clubList.length}
                             now={i}

@@ -61,32 +61,22 @@ export const ItemWrapper = styled.div<IItemWrapperProps>`
   &:hover {
     width: 620px;
   }
-  &:nth-child(4n):hover {
+  &:nth-of-type(4n):hover {
     right: 330px;
   }
   &:hover + div {
     box-shadow: ${(props) => (props.now + 1) % 4 != 0 ? 'none !important' : null};
   }
+  &:hover h3 {
+    width: 320px;
+  }
+  &:hover > div > div:nth-of-type(2) {
+    margin-left: 30px;
+  }
+
   z-index: ${(props) => props.max - props.now};
   
 `
-
-/*
-&:hover > div > ${ItemImgWrap} {
-    margin-left: 30px;
-  }
-&:hover ${ItemSubHeader} {
-    width: 320px;
-  }
-  ${(props : test) =>
-    (props.now + 1) % 4 != 0 &&
-    css`
-      &:hover + div {
-        box-shadow: none !important;
-      }
-    `} 
-    z-index: ${(props) => props.max - props.now};*/
-
 
 export const ItemDesWrapper = styled.div`
   margin-right: -6px;
@@ -145,7 +135,7 @@ export const ButtonsWrapper = styled.div`
 `;
 
 
-export const RadiusButton = styled.a<{ active?: boolean }>`
+export const RadiusButton = styled.div<{ active?: boolean }>`
   padding: 5px 18px;
   color: white;
   border: none;

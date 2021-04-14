@@ -79,20 +79,20 @@ export const ClubItem = (props: Props) => {
                         <p>{description}</p>
                         <S.IntroIcon>
                             <S.FieldIconWrapper>
-                                {tag.map((val) => {
+                                {tag.map((val,index) => {
                                     switch (val) {
                                         case "인공지능":
-                                            return brainIc;
+                                            return <span key={index}>{brainIc}</span>;
                                         case "웹":
-                                            return earthIc;
+                                            return <span key={index}>{earthIc}</span>;
                                         case "앱":
-                                            return phonoeIc;
+                                            return <span key={index}>{phonoeIc}</span>;
                                         case "정보보안":
-                                            return shieldIc;
+                                            return <span key={index}>{shieldIc}</span>;
                                         case "임베디드":
-                                            return embedIc;
+                                            return <span key={index}>{embedIc}</span>;
                                         default:
-                                            return etcIc;
+                                            return <span key={index}>{etcIc}</span>;
                                     }
                                 })}
                             </S.FieldIconWrapper>
