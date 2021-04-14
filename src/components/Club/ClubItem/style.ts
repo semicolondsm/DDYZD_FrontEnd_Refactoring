@@ -1,5 +1,6 @@
 import styled from "@emotion/styled"
 import { color } from "@/src/styles";
+import { css } from "@emotion/react";
 
 export const ItemFontWrapper = styled.div`
   margin: 0 10px;
@@ -39,7 +40,12 @@ export const ItemSubHeader = styled.h3`
   text-overflow: ellipsis;
 `;
 
-export const ItemWrapper = styled.div<{ max: number; now: number }>`
+
+interface IItemWrapperProps{
+  max : number,
+  now : number,
+}
+export const ItemWrapper = styled.div<IItemWrapperProps>`
   cursor: pointer;
   width: 290px;
   height: 200px;
@@ -58,21 +64,29 @@ export const ItemWrapper = styled.div<{ max: number; now: number }>`
   &:nth-child(4n):hover {
     right: 330px;
   }
-  ${(props) =>
+  &:hover + div {
+    box-shadow: ${(props) => (props.now + 1) % 4 != 0 ? 'none !important' : null}
+  }
+  z-index: ${(props) => props.max - props.now};
+  
+`
+
+/*
+&:hover > div > ${ItemImgWrap} {
+    margin-left: 30px;
+  }
+&:hover ${ItemSubHeader} {
+    width: 320px;
+  }
+  ${(props : test) =>
     (props.now + 1) % 4 != 0 &&
-    `
+    css`
       &:hover + div {
         box-shadow: none !important;
       }
-    `}
-  &:hover > div > ${ItemImgWrap} {
-    margin-left: 30px;
-  }
-  &:hover ${ItemSubHeader} {
-    width: 320px;
-  }
-  z-index: ${(props) => props.max - props.now};
-`;
+    `} 
+    z-index: ${(props) => props.max - props.now};*/
+
 
 export const ItemDesWrapper = styled.div`
   margin-right: -6px;
@@ -130,6 +144,7 @@ export const ButtonsWrapper = styled.div`
   display: flex;
 `;
 
+
 export const RadiusButton = styled.a<{ active?: boolean }>`
   padding: 5px 18px;
   color: white;
@@ -141,7 +156,7 @@ export const RadiusButton = styled.a<{ active?: boolean }>`
   white-space: nowrap;
   ${(props) =>
     props.active &&
-    `
+    css`
       padding: 5px 30px;
       cursor: pointer;
       &:hover {

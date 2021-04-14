@@ -22,7 +22,7 @@ interface Props {
     clubrecruitment: boolean;
 }
 
-export const MajorItem = (props: Props) => {
+export const ClubItem = (props: Props) => {
     const router = useRouter();
     const {
         imgSrc,
@@ -31,6 +31,8 @@ export const MajorItem = (props: Props) => {
         tag,
         banner,
         id,
+        max,
+        now,
         clubrecruitment,
     } = props;
     const convertIdLinkChat = async () => {
@@ -40,8 +42,8 @@ export const MajorItem = (props: Props) => {
     return (
         <Link href={`/club/${id}`}>
             <S.ItemWrapper
-                max={props.max}
-                now={props.now}
+                max={max}
+                now={now}
                 style={
                     clubrecruitment
                         ? { border: `3px solid ${color.purple400}` }
