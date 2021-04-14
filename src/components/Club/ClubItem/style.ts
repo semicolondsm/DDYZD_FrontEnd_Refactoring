@@ -65,7 +65,7 @@ export const ItemWrapper = styled.div<IItemWrapperProps>`
     right: 330px;
   }
   &:hover + div {
-    box-shadow: ${(props) => (props.now + 1) % 4 != 0 ? 'none !important' : null}
+    box-shadow: ${(props) => (props.now + 1) % 4 != 0 ? 'none !important' : null};
   }
   z-index: ${(props) => props.max - props.now};
   

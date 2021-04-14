@@ -56,7 +56,7 @@ export const ClubItem = (props: Props) => {
                     <S.PointButton></S.PointButton>
                     <S.ItemImgWrap>
                         <S.ItemImg
-                            src={`${process.env.NEXT_PUBLIC_URL}/file/${banner}`}
+                            src={`${process.env.NEXT_PUBLIC_BASEURL}/file/${banner}`}
                         />
                     </S.ItemImgWrap>
                     <S.ItemFontWrapper>
@@ -72,7 +72,7 @@ export const ClubItem = (props: Props) => {
                     </S.ButtonsWrapper>
                     <S.IconWrapper>
                         <S.Icon
-                            src={`${process.env.NEXT_PUBLIC_URL}/file/${imgSrc}`}
+                            src={`${process.env.NEXT_PUBLIC_BASEURL}/file/${imgSrc}`}
                         />
                     </S.IconWrapper>
                     <S.IntroWrapper>
