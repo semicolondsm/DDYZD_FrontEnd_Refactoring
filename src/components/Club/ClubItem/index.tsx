@@ -42,8 +42,8 @@ export const ClubItem : FC<Props> = ({imgSrc, header, description, tag, banner, 
           
             })
             thisElement.current.addEventListener("mouseout", ()=>{
+                prevElement.style.boxShadow = "0 5px 5px rgba(0, 0, 0, 0.29)";
                 time.current=setTimeout(()=>{
-                    prevElement.style.boxShadow = "0 5px 5px rgba(0, 0, 0, 0.29)";
                     thisElement.current.style.zIndex = `0`;
                 },150)
             })
@@ -55,7 +55,7 @@ export const ClubItem : FC<Props> = ({imgSrc, header, description, tag, banner, 
                 ref={thisElement}
                 max={max}
                 now={now}
-                style={clubrecruitment ? { border: `3px solid ${color.purple400}` }: null}
+                clubrecruitment={clubrecruitment}
             >
                 <div>
                     <S.PurpleBack />
@@ -70,8 +70,8 @@ export const ClubItem : FC<Props> = ({imgSrc, header, description, tag, banner, 
                         <S.ItemHeader>{header}</S.ItemHeader>
                         <S.ItemSubHeader>{description}</S.ItemSubHeader>
                     </S.ItemFontWrapper>
-                    <S.ButtonsWrapper>
-                        <S.RadiusButton onClick={convertIdLinkChat} active={true}>
+                    <S.ButtonsWrapper active={clubrecruitment}>
+                        <S.RadiusButton onClick={convertIdLinkChat}>
                             {
                                 clubrecruitment ? "지원하기" : "자세히보기"
                             }

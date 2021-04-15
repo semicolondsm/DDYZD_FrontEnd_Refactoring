@@ -44,13 +44,14 @@ export const ItemSubHeader = styled.h3`
 interface IItemWrapperProps{
   max : number,
   now : number,
+  clubrecruitment : boolean,
 }
 export const ItemWrapper = styled.div<IItemWrapperProps>`
   cursor: pointer;
   width: 290px;
   height: 200px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-  border: 1px solid ${color.grey300};
+  border: ${(props)=> props.clubrecruitment ? `3px solid ${color.purple400}` : `1px solid ${color.grey300}`};
   border-radius: 5px;
   position: relative;
   background: white;
@@ -128,16 +129,16 @@ export const PurpleBack = styled.div`
   transform: rotate(17deg);
 `;
 
-export const ButtonsWrapper = styled.div`
+export const ButtonsWrapper = styled.div<{ active?: boolean }>`
   position: absolute;
-  left: 480px;
+  left: ${(props)=>props.active ? '480px' : '470px'};
   bottom: 12px;
   display: flex;
 `;
 
 
-export const RadiusButton = styled.div<{ active?: boolean }>`
-  padding: 5px 18px;
+export const RadiusButton = styled.div`
+  padding: 5px 30px;
   color: white;
   border: none;
   border-radius: 25px;
@@ -145,15 +146,9 @@ export const RadiusButton = styled.div<{ active?: boolean }>`
   outline: none;
   font-size: 14px;
   white-space: nowrap;
-  ${(props) =>
-    props.active &&
-    css`
-      padding: 5px 30px;
-      cursor: pointer;
-      &:hover {
-        background: #2a084a;
-      }
-    `}
+  &:hover {
+    background: #2a084a;
+  }
   &:last-child {
     margin-left: 10px;
   }
