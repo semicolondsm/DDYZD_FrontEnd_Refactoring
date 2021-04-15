@@ -9,12 +9,11 @@ import Link from "next/link";
 import { CreateRoomAndGetRoomId } from "@/src/libs/function/chat";
 import { color } from "@/src/styles";
 import { useRouter } from "next/router";
-import { FC } from "react";
+import { FC, useCallback, useEffect, useRef } from "react";
 interface Props {
     max: number;
     now: number;
-    className: string;
-    imgSrc?: string;
+    imgSrc?: string;    
     header: string;
     tag: string[];
     description: string;
@@ -23,35 +22,41 @@ interface Props {
     clubrecruitment: boolean;
 }
 
-export const ClubItem : FC<Props> = (props) => {
+export const ClubItem : FC<Props> = ({imgSrc, header, description, tag, banner, id, max, now, clubrecruitment,}) => {
+    const thisElement=useRef<HTMLDivElement>();
     const router = useRouter();
-    const {
-        imgSrc,
-        header,
-        description,
-        tag,
-        banner,
-        id,
-        max,
-        now,
-        clubrecruitment,
-    } = props;
-    const convertIdLinkChat = async () => {
+    const time = useRef<ReturnType<typeof setTimeout>>(null);
+    const convertIdLinkChat = useCallback(async () => {
         const chat_id: number = await CreateRoomAndGetRoomId(id);
-        router.push(`/chat/${chat_id}`);
-    };
+        if(clubrecruitment) router.push(`/chat/${chat_id}`);
+        else router.push(`/club/${id}`);
+    },[id]);
+    useEffect(()=>{
+        if((now+1)%4===0){
+            const prevElement : Element=thisElement.current.previousElementSibling;
+            thisElement.current.addEventListener("mouseover",()=>{
+                clearTimeout(time.current);
+                thisElement.current.style.zIndex = `40`;
+                prevElement.style.boxShadow="none";
+          
+            })
+            thisElement.current.addEventListener("mouseout", ()=>{
+                time.current=setTimeout(()=>{
+                    prevElement.style.boxShadow = "0 5px 5px rgba(0, 0, 0, 0.29)";
+                    thisElement.current.style.zIndex = `0`;
+                },150)
+            })
+        }
+    },[])
     return (
         <Link href={`/club/${id}`}>
-            <S.ItemWrapper
+            <S.ItemWrapper 
+                ref={thisElement}
                 max={max}
                 now={now}
-                style={
-                    clubrecruitment
-                        ? { border: `3px solid ${color.purple400}` }
-                        : {}
-                }
+                style={clubrecruitment ? { border: `3px solid ${color.purple400}` }: null}
             >
-                <div className={props.className}>
+                <div>
                     <S.PurpleBack />
                     {/* 핀 버튼 추가 */}
                     <S.PointButton></S.PointButton>
@@ -65,11 +70,11 @@ export const ClubItem : FC<Props> = (props) => {
                         <S.ItemSubHeader>{description}</S.ItemSubHeader>
                     </S.ItemFontWrapper>
                     <S.ButtonsWrapper>
-                        <a onClick={convertIdLinkChat}>
-                            <S.RadiusButton active={true}>
-                                신청하기
-                            </S.RadiusButton>
-                        </a>
+                        <S.RadiusButton onClick={convertIdLinkChat} active={true}>
+                            {
+                                clubrecruitment ? "지원하기" : "자세히보기"
+                            }
+                        </S.RadiusButton>
                     </S.ButtonsWrapper>
                     <S.IconWrapper>
                         <S.Icon

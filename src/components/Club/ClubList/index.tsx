@@ -1,14 +1,46 @@
 import * as S from "./style";
 import { ClubItem } from "../ClubItem";
-import { FC, MutableRefObject, useEffect, useRef, useState } from "react";
-import club from "@/src/libs/api/club";
-import { IMajorData } from "@/src/libs/intefaces/Major";
+import { FC } from "react";
+import { IClubData } from "@/src/libs/intefaces/Club";
 
-interface Props { clubList : IMajorData[]}
+interface Props { clubList : IClubData[]}
 export const ClubList : FC<Props> = ({ clubList }) => {
-    const time: MutableRefObject<any> = useRef({});
-    useEffect(() => {
-        const items: any = document.querySelectorAll(".majoritem");
+    return (
+        <S.BodyWrapper>
+            <S.Wrapper>
+                {clubList.map((value, i) => {
+                    const {
+                        clubname,
+                        clubtag,
+                        clubimage,
+                        clubdescription,
+                        clubbanner,
+                        clubid,
+                        clubrecruitment,
+                    } = value;
+                    return (
+                        <ClubItem 
+                            key={clubid}
+                            max={clubList.length}
+                            now={i}
+                            header={clubname}
+                            tag={clubtag}
+                            description={clubdescription}
+                            imgSrc={clubimage}
+                            banner={clubbanner}
+                            id={clubid}
+                            clubrecruitment={clubrecruitment}
+                        />
+                    );
+                })}
+            </S.Wrapper>
+        </S.BodyWrapper>
+    );
+};
+
+
+/*useEffect(() => {
+        const items: any = document.querySelectorAll(".clubitem");
         for (let i = 0; i < items.length; i++) {
             if ((i + 1) % 4 === 0) {
                 items[i].addEventListener("mouseover", () => {
@@ -27,38 +59,4 @@ export const ClubList : FC<Props> = ({ clubList }) => {
                 });
             }
         }
-    }, []);
-
-    return (
-        <S.BodyWrapper>
-            <S.Wrapper>
-                {clubList.map((value, i) => {
-                    const {
-                        clubname,
-                        clubtag,
-                        clubimage,
-                        clubdescription,
-                        clubbanner,
-                        clubid,
-                        clubrecruitment,
-                    } = value;
-                    return (
-                        <ClubItem
-                            key={clubid}
-                            className="majoritem"
-                            max={clubList.length}
-                            now={i}
-                            header={clubname}
-                            tag={clubtag}
-                            description={clubdescription}
-                            imgSrc={clubimage}
-                            banner={clubbanner}
-                            id={clubid}
-                            clubrecruitment={clubrecruitment}
-                        />
-                    );
-                })}
-            </S.Wrapper>
-        </S.BodyWrapper>
-    );
-};
+    }, []);*/   

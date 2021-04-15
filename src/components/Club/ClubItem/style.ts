@@ -60,6 +60,7 @@ export const ItemWrapper = styled.div<IItemWrapperProps>`
   right: 0;
   &:hover {
     width: 620px;
+
   }
   &:nth-of-type(4n):hover {
     right: 330px;
