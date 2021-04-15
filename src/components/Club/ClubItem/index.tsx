@@ -9,6 +9,7 @@ import Link from "next/link";
 import { CreateRoomAndGetRoomId } from "@/src/libs/function/chat";
 import { color } from "@/src/styles";
 import { useRouter } from "next/router";
+import { FC } from "react";
 interface Props {
     max: number;
     now: number;
@@ -22,7 +23,7 @@ interface Props {
     clubrecruitment: boolean;
 }
 
-export const ClubItem = (props: Props) => {
+export const ClubItem : FC<Props> = (props) => {
     const router = useRouter();
     const {
         imgSrc,
