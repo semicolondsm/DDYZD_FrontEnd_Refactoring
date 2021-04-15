@@ -7,7 +7,6 @@ import shieldIc from "@/src/assets/images/shield";
 import embedIc from "@/src/assets/images/embed";
 import Link from "next/link";
 import { CreateRoomAndGetRoomId } from "@/src/libs/function/chat";
-import { color } from "@/src/styles";
 import { useRouter } from "next/router";
 import React, { FC, MouseEvent, useCallback, useEffect, useRef } from "react";
 interface Props {
