@@ -9,7 +9,7 @@ import Link from "next/link";
 import { CreateRoomAndGetRoomId } from "@/src/libs/function/chat";
 import { color } from "@/src/styles";
 import { useRouter } from "next/router";
-import { FC, useCallback, useEffect, useRef } from "react";
+import React, { FC, MouseEvent, useCallback, useEffect, useRef } from "react";
 interface Props {
     max: number;
     now: number;
@@ -26,14 +26,15 @@ export const ClubItem : FC<Props> = ({imgSrc, header, description, tag, banner, 
     const thisElement=useRef<HTMLDivElement>();
     const router = useRouter();
     const time = useRef<ReturnType<typeof setTimeout>>(null);
-    const convertIdLinkChat = useCallback(async () => {
+    const convertIdLinkChat = useCallback(async (e : MouseEvent<HTMLElement>) => {
+        e.preventDefault();
         const chat_id: number = await CreateRoomAndGetRoomId(id);
         if(clubrecruitment) router.push(`/chat/${chat_id}`);
         else router.push(`/club/${id}`);
     },[id]);
     useEffect(()=>{
         if((now+1)%4===0){
-            const prevElement : Element=thisElement.current.previousElementSibling;
+            const prevElement=thisElement.current.previousElementSibling as HTMLDivElement;
             thisElement.current.addEventListener("mouseover",()=>{
                 clearTimeout(time.current);
                 thisElement.current.style.zIndex = `40`;
