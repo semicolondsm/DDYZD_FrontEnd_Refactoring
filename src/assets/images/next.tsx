@@ -6,3 +6,4 @@ export default (<svg xmlns="http://www.w3.org/2000/svg" width="25" height="26" v
 </g>
 </svg>
 );
+
