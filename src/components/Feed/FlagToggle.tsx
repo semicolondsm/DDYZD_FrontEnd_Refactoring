@@ -1,5 +1,6 @@
 import { useState, useRef, MutableRefObject } from "react";
 import feed from "@/src/libs/api/feed";
+
 const color = "#606670";
 function FlagToggle({
   setFlags,
@@ -24,23 +25,29 @@ function FlagToggle({
   );
   const stateIn = useRef<boolean | null>(null);
   async function togglehandler() {
-    if (timer.current !== null) clearTimeout(timer.current);
-    if (state === true) {
-      setToggle(false);
-      setState(false);
-      stateIn.current = false;
-      setFlags(flags - 1);
-    } else {
-      setToggle(true);
-      setState(true);
-      stateIn.current = true;
-      setFlags(flags + 1);
-    }
-    timer.current = setTimeout(() => {
-      if (originState !== stateIn.current) {
-        feed.putFlag(feed_id).then(() => setOriginState(stateIn.current));
+    if (!localStorage.getItem("accessToken")) {
+      alert("로그인을 해주세요 !");
+      return;
+    } 
+    else {
+      if (timer.current !== null) clearTimeout(timer.current);
+      if (state === true) {
+        setToggle(false);
+        setState(false);
+        stateIn.current = false;
+        setFlags(flags - 1);
+      } else {
+        setToggle(true);
+        setState(true);
+        stateIn.current = true;
+        setFlags(flags + 1);
       }
-    }, 1000);
+      timer.current = setTimeout(() => {
+        if (originState !== stateIn.current) {
+          feed.putFlag(feed_id).then(() => setOriginState(stateIn.current));
+        }
+      }, 1000);
+    }
   }
   return (
     <div>
