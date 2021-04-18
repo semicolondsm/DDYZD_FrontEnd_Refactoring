@@ -1,5 +1,5 @@
 import Header from "../Header/Header";
-import ClubPreview from "./ClubPreview/ClubPreview";
+import ClubPreview from "./ClubPreview";
 function ClubManagement({ club_id } : { club_id : number}){
     return(
         <>
