@@ -30,7 +30,7 @@ const FeedSlider : FC<Props> = ({ media }) => {
                                     100 * index
                                 }%)`,
                             }}
-                            src={`${process.env.NEXT_PUBLIC_URL}/file/${i}`}
+                            src={`${process.env.NEXT_PUBLIC_BASEURL}/file/${i}`}
                         ></img>
                     ))}
                 </S.SliderImages>
