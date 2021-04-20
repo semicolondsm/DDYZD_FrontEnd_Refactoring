@@ -3,7 +3,7 @@ export default function dateFormat(params: Date) {
     let diff = (new Date().getTime() - date.getTime()) / 1000,
       day_diff = Math.floor(diff / 86400);
     if (isNaN(day_diff) || day_diff < 0 || day_diff >= 31)
-      return `${date.getFullYear()}년 ${date.getDay()}월 ${date.getDate()}일`;
+      return `${date.getFullYear()}년 ${date.getMonth()+1}월 ${date.getDate()}일`;
     return (
       (day_diff == 0 &&
         ((diff < 60 && "방금") ||
