@@ -17,53 +17,18 @@ export const getServerSideProps = (context : GetServerSidePropsContext)  => {
     };
 }
 
-interface infiniteScrollType {
-    page: number,
-    last: boolean,
-    loading: boolean,
-    setLoading: () => boolean,
-}
-
 function club({clubid} : {clubid : number}){
     const [ clubData, setClubData ] = useState<IClubInfo>()
-    const [ feedData, setFeedData ] = useState<IFeedData[]>([])
-
-    const [ page, last, loading ] = useInfiniteScroll<infiniteScrollType>();
-    const [ feedPage, setFeedPage ] = useState<any>(page);
-    const [ feedLoading, setFeedLoading] = useState<any>(loading)
-    const [ feedLast, setFeedLast] = useState<any>(last)
-
+    const [data, loading] = useInfiniteScroll<IFeedData>((page)=>clubAPI.getFeed(clubid, page));
     useEffect(()=>{
         clubAPI.getInfo(clubid)
         .then((res)=>{
             setClubData(res.data);
         })
-        console.log(clubData)
     },[clubid])
-
-    useEffect(()=>{
-        if(feedLoading && !feedLast){
-            console.log(feedPage)
-            setFeedPage(feedPage+1);
-            clubAPI.getFeed(clubid,feedPage+1)
-            .then((res)=>{
-                if(res.data.length===0) {
-                    setFeedLoading(false);
-                setFeedLast(true);
-                }
-                setFeedData([...feedData, ...res.data])
-                setFeedLoading(false);
-                console.log("asdasdasd")
-                
-            })
-          .catch((e)=>console.log(e))
-        }
-        console.log(feedData, "asdasd")
-      },[feedLoading])
-    
     return (
         <>
-            <Header color="white"/>
+
             {
                 clubData ? 
                 <>
@@ -73,7 +38,7 @@ function club({clubid} : {clubid : number}){
                     </div>
                     
                     <ClubRecruitment club_id={clubid}></ClubRecruitment>
-                    <Feed data={feedData}></Feed>
+                    <Feed loading={loading} data={data}></Feed>
                 </>
                 : null
             }

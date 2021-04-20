@@ -3,28 +3,24 @@ import * as S from "./styles"
 import FeedSkeleton from "./FeedCard/FeedSkelton";
 import FeedLoading from "./FeedLoading/FeedLoading";
 import { IFeedData } from "@/src/libs/intefaces/Feed";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-  
-function Feed({data} : {data : IFeedData[]}){
-  console.log(data);
-  const [ feedData, setFeedData ] = useState<IFeedData[]>(data)
-
-  useEffect(()=>{
-    setFeedData(data)
-  },[data])
-
+interface Props{
+  data : IFeedData[];
+  loading : boolean;
+}
+const Feed : FC<Props> = ({data, loading}) => {
   return(
     <>
       <S.FeedList>
         {
-          feedData.length !==0 ? 
-          feedData.map((i)=>(<FeedCard key={i["feedId"]} props={i}></FeedCard>))
+          data.length !==0 ? 
+          data.map((i)=>(<FeedCard key={i["feedId"]} props={i}></FeedCard>))
           : Array(30).fill(1).map((_i, index : number)=>(<FeedSkeleton key={index}></FeedSkeleton>))
         }
       </S.FeedList>
       {
-        feedData ? 
+        loading ? 
           <FeedLoading></FeedLoading>
         : null
       }

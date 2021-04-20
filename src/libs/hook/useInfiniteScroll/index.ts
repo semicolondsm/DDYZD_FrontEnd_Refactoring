@@ -1,20 +1,11 @@
-import { AxiosPromise } from 'axios';
-import { useState, useEffect, useCallback, SetStateAction, Dispatch } from 'react';
+import { AxiosPromise } from "axios";
+import { useCallback, useEffect, useState } from "react";
 
-interface useInfiniteScrollType {
-  page: number,
-  last: boolean,
-  loading: boolean,
-  setLoading: () => Dispatch<SetStateAction<boolean>>,
-  setPage: () => Dispatch<SetStateAction<boolean>>,
-  setLast: () => Dispatch<SetStateAction<boolean>>,
-}
-
-export function useInfiniteScroll<T>(){
+export function useInfiniteScroll<T>(getData : (page : number) => AxiosPromise<any>): [T[], boolean]{
+  const [data, setData] = useState<T[]>([]);
   const [page, setPage] = useState<number>(-1);
   const [last, setLast] = useState<boolean>(false);
   const [loading,setLoading] = useState<boolean>(true);
-
   const scrollEvent = useCallback(()=>{
     let scrollHeight = Math.max(
       document.documentElement.scrollHeight,
@@ -33,6 +24,21 @@ export function useInfiniteScroll<T>(){
     window.addEventListener("scroll",scrollEvent)
     return () => window.removeEventListener("scroll",scrollEvent);
   },[])
-
-  return [ page, last, loading];
+  useEffect(()=>{
+    if(loading && !last){
+      setPage((oldPage)=>{
+        getData(oldPage+1).then((res)=>{
+          if(res.data.length===0) setLast(true);
+          setData([...data, ...res.data])
+          setLoading(false);
+        })
+        .catch((e)=>console.log(e))
+        return oldPage+1;
+      }) 
+    }
+  },[loading])
+  useEffect(()=>{
+    if(last) window.removeEventListener("scroll",scrollEvent);
+  },[last])
+  return [data, loading];
 }
