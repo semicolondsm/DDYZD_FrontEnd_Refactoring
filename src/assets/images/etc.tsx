@@ -21,7 +21,7 @@ export default (
       id="기타_아이콘"
       data-name="기타 아이콘"
       transform="translate(-1330 -1474)"
-      clipPath="url(#clip-path)"
+      clip-path="url(#clip-path)"
     >
       <g id="guitar" transform="translate(1330.001 1474)">
         <path

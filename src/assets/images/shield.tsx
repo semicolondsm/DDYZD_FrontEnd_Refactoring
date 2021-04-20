@@ -38,7 +38,7 @@ export default (
         transform="translate(788 1381)"
         fill="none"
         stroke="#fff"
-        strokeWidth="1.5"
+        stroke-width="1.5"
       >
         <circle cx="4" cy="4" r="4" stroke="none" />
         <circle cx="4" cy="4" r="3.25" fill="none" />

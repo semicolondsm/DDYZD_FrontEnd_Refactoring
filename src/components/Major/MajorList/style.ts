@@ -39,18 +39,12 @@ export const ItemSubHeader = styled.h3`
   text-overflow: ellipsis;
 `;
 
-
-interface IItemWrapperProps{
-  max : number,
-  now : number,
-  clubrecruitment : boolean,
-}
-export const ItemWrapper = styled.div<IItemWrapperProps>`
+export const ItemWrapper = styled.div<{ max: number; now: number }>`
   cursor: pointer;
   width: 290px;
   height: 200px;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
-  border: ${(props)=> props.clubrecruitment ? `3px solid ${color.purple400}` : `1px solid ${color.grey300}`};
+  border: 1px solid ${color.grey300};
   border-radius: 5px;
   position: relative;
   background: white;
@@ -60,24 +54,25 @@ export const ItemWrapper = styled.div<IItemWrapperProps>`
   right: 0;
   &:hover {
     width: 620px;
-
   }
-  &:nth-of-type(4n):hover {
+  &:nth-child(4n):hover {
     right: 330px;
   }
-  &:hover + div {
-    box-shadow: ${(props) => (props.now + 1) % 4 != 0 ? 'none !important' : null};
-  }
-  &:hover h3 {
-    width: 320px;
-  }
-  &:hover > div > div:nth-of-type(2) {
+  ${(props) =>
+    (props.now + 1) % 4 != 0 &&
+    `
+      &:hover + div {
+        box-shadow: none !important;
+      }
+    `}
+  &:hover > div > ${ItemImgWrap} {
     margin-left: 30px;
   }
-
+  &:hover ${ItemSubHeader} {
+    width: 320px;
+  }
   z-index: ${(props) => props.max - props.now};
-  
-`
+`;
 
 export const ItemDesWrapper = styled.div`
   margin-right: -6px;
@@ -128,16 +123,15 @@ export const PurpleBack = styled.div`
   transform: rotate(17deg);
 `;
 
-export const ButtonsWrapper = styled.div<{ active?: boolean }>`
+export const ButtonsWrapper = styled.div`
   position: absolute;
-  left: ${(props)=>props.active ? '480px' : '470px'};
+  left: 480px;
   bottom: 12px;
   display: flex;
 `;
 
-
-export const RadiusButton = styled.div`
-  padding: 5px 30px;
+export const RadiusButton = styled.a<{ active?: boolean }>`
+  padding: 5px 18px;
   color: white;
   border: none;
   border-radius: 25px;
@@ -145,9 +139,15 @@ export const RadiusButton = styled.div`
   outline: none;
   font-size: 14px;
   white-space: nowrap;
-  &:hover {
-    background: #2a084a;
-  }
+  ${(props) =>
+    props.active &&
+    `
+      padding: 5px 30px;
+      cursor: pointer;
+      &:hover {
+        background: #2a084a;
+      }
+    `}
   &:last-child {
     margin-left: 10px;
   }
@@ -197,3 +197,11 @@ export const IntroIcon = styled.div`
   position: relative;
 `;
 
+export const FieldIconWrapper = styled.div`
+  position: absolute;
+  top: calc(100% + 15px);
+  right: 0;
+  & svg {
+    margin-left: 5px;
+  }
+`;

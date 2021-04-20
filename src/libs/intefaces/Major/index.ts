@@ -1,4 +1,4 @@
-export interface IClubData {
+export interface IMajorData {
     clubid: number;
     clubname: string;
     clubtag: string[];

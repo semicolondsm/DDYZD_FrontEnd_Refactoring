@@ -122,7 +122,7 @@ export default (
         transform="translate(807 1417)"
         fill="#fff"
         stroke="#7b1acf"
-        strokeWidth="1.5"
+        stroke-width="1.5"
       >
         <rect width="16" height="16" stroke="none" />
         <rect x="0.75" y="0.75" width="14.5" height="14.5" fill="none" />
@@ -149,7 +149,7 @@ export default (
         transform="translate(804.333 1420.333)"
         fill="#3d3a3a"
         stroke="#7b1acf"
-        strokeWidth="1"
+        stroke-width="1"
       >
         <rect width="2.667" height="1.333" stroke="none" />
         <rect x="0.5" y="0.5" width="1.667" height="0.333" fill="none" />
@@ -160,7 +160,7 @@ export default (
         transform="translate(804.333 1424.333)"
         fill="#3d3a3a"
         stroke="#7b1acf"
-        strokeWidth="1"
+        stroke-width="1"
       >
         <rect width="2.667" height="1.333" stroke="none" />
         <rect x="0.5" y="0.5" width="1.667" height="0.333" fill="none" />
@@ -171,7 +171,7 @@ export default (
         transform="translate(804.333 1428.333)"
         fill="#3d3a3a"
         stroke="#7b1acf"
-        strokeWidth="1"
+        stroke-width="1"
       >
         <rect width="2.667" height="1.333" stroke="none" />
         <rect x="0.5" y="0.5" width="1.667" height="0.333" fill="none" />
@@ -182,7 +182,7 @@ export default (
         transform="translate(823 1420.333)"
         fill="#3d3a3a"
         stroke="#7b1acf"
-        strokeWidth="1"
+        stroke-width="1"
       >
         <rect width="2.667" height="1.333" stroke="none" />
         <rect x="0.5" y="0.5" width="1.667" height="0.333" fill="none" />
@@ -193,7 +193,7 @@ export default (
         transform="translate(823 1424.333)"
         fill="#3d3a3a"
         stroke="#7b1acf"
-        strokeWidth="1"
+        stroke-width="1"
       >
         <rect width="2.667" height="1.333" stroke="none" />
         <rect x="0.5" y="0.5" width="1.667" height="0.333" fill="none" />
@@ -204,7 +204,7 @@ export default (
         transform="translate(823 1428.333)"
         fill="#3d3a3a"
         stroke="#7b1acf"
-        strokeWidth="1"
+        stroke-width="1"
       >
         <rect width="2.667" height="1.333" stroke="none" />
         <rect x="0.5" y="0.5" width="1.667" height="0.333" fill="none" />
@@ -215,7 +215,7 @@ export default (
         transform="translate(811 1421)"
         fill="#fff"
         stroke="#7b1acf"
-        strokeWidth="1.5"
+        stroke-width="1.5"
       >
         <rect width="8" height="8" stroke="none" />
         <rect x="0.75" y="0.75" width="6.5" height="6.5" fill="none" />

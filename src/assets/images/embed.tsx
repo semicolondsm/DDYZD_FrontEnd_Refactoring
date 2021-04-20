@@ -16,7 +16,7 @@ export default (
         transform="translate(1146.537 1484.172)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       >
         <rect width="32.292" height="32.292" stroke="none" />
         <rect x="1.5" y="1.5" width="29.292" height="29.292" fill="none" />
@@ -36,7 +36,7 @@ export default (
         transform="translate(1155.474 1480.5)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_163"
@@ -45,7 +45,7 @@ export default (
         transform="translate(1163.041 1480.5)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_164"
@@ -54,7 +54,7 @@ export default (
         transform="translate(1170.608 1480.5)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_165"
@@ -63,7 +63,7 @@ export default (
         transform="translate(1155.474 1516.176)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_166"
@@ -72,7 +72,7 @@ export default (
         transform="translate(1163.041 1516.176)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_167"
@@ -81,7 +81,7 @@ export default (
         transform="translate(1170.608 1516.176)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_168"
@@ -90,7 +90,7 @@ export default (
         transform="translate(1146.824 1508.608) rotate(90)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_169"
@@ -99,7 +99,7 @@ export default (
         transform="translate(1146.824 1501.041) rotate(90)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_170"
@@ -108,7 +108,7 @@ export default (
         transform="translate(1146.824 1493.474) rotate(90)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_171"
@@ -117,7 +117,7 @@ export default (
         transform="translate(1182.5 1508.608) rotate(90)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_172"
@@ -126,7 +126,7 @@ export default (
         transform="translate(1182.5 1501.041) rotate(90)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
       <line
         id="선_173"
@@ -135,7 +135,7 @@ export default (
         transform="translate(1182.5 1493.474) rotate(90)"
         fill="none"
         stroke="#fff"
-        strokeWidth="3"
+        stroke-width="3"
       />
     </g>
   </svg>
