@@ -1,5 +1,7 @@
 import * as S from "./styles"
-function ClubHeader({data} : {data : any}){
+import { IClubInfo } from '@/src/libs/intefaces/Club';
+
+export const ClubHeader = ({data} : {data : IClubInfo}) => {
     return(
         <S.Wrapper>
             <S.BannerWrapper>
