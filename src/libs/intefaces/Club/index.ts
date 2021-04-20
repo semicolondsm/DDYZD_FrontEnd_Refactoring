@@ -1,11 +1,11 @@
 export interface IClubInfo{
-	clubid : number,
-	clubname : String,
-	clubtag :  String[] ,
-	clubimage :  String ,
-	backimage :  String ,
-	description :  String,
-	follow : boolean,
+	clubid : number;
+	clubname : string;
+	clubtag :  string[];
+	clubimage :  string;
+	backimage :  string;
+	description :  string;
+	follow : boolean;
 }
 
 export interface IClubItemTableData {
@@ -20,4 +20,13 @@ export interface IClubItemData {
 	amount: string;
 	price: number;
 	delivery_status: string;
+}
+export interface IClubData {
+    clubid: number;
+    clubname: string;
+    clubtag: string[];
+    clubimage: string;
+    clubdescription: string;
+    clubbanner: string;
+    clubrecruitment: boolean;
 }

@@ -130,7 +130,7 @@ export default{
         })
 
     },
-    addRecru(club_id : number, closeAt : Date, major : string[]){
+    addRecru(club_id : number, closeAt : Date, club : string[]){
         return request({
             url : `/club/${club_id}/recruitment`,
             method : 'post',
@@ -138,7 +138,7 @@ export default{
                 "Authorization" : `Bearer ${localStorage.accessToken}`
             },
             data : {
-                major : major,
+                club : club,
                 closeAt : closeAt,
 
             }
