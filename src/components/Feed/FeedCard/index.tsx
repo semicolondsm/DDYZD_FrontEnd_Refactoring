@@ -13,16 +13,15 @@ function FeedCard({ props }: { props: IFeedData }) {
     const [flags, setFlags] = useState<number>(props.flags);
     const [state, setState1] = useState<boolean>(props.flag);
     const [originState, setOriginState] = useState<boolean>(props.flag);
-    
-    const {sliderRef ,page, Prev, Next ,Swipe, TouchEnd, TouchMove} = useSlider()
 
+    console.log(props);
     return (
         <li>
             <S.CardHeader>
                 <Link href={`club/${props.clubId}`}>
                     <a>
                         <img
-                            src={`${process.env.NEXT_PUBLIC_URL}/file/${props.profileImage}`}
+                            src={`${process.env.NEXT_PUBLIC_BASEURL}/file/${props.profileImage}`}
                         ></img>
                     </a>
                 </Link>
