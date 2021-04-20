@@ -10,7 +10,6 @@ import Feed from '@/src/components/Feed';
 
 export const getServerSideProps = (context : GetServerSidePropsContext)  => {
     
-
     return {
         props: {
             clubid: context.query.clubid
@@ -27,22 +26,24 @@ interface infiniteScrollType {
 
 function club({clubid} : {clubid : number}){
     const [ clubData, setClubData ] = useState<IClubInfo>()
-    const [ feedData, setFeedData ] = useState<IFeedData[]>()
+    const [ feedData, setFeedData ] = useState<IFeedData[]>([])
 
     const [ page, last, loading ] = useInfiniteScroll<infiniteScrollType>();
     const [ feedPage, setFeedPage ] = useState<any>(page);
     const [ feedLoading, setFeedLoading] = useState<any>(loading)
-    const [ feedLast, setFeedLast] = useState<any>(loading)
+    const [ feedLast, setFeedLast] = useState<any>(last)
 
     useEffect(()=>{
         clubAPI.getInfo(clubid)
         .then((res)=>{
             setClubData(res.data);
         })
-    })
+        console.log(clubData)
+    },[clubid])
 
     useEffect(()=>{
-        if(loading && !last){
+        if(feedLoading && !feedLast){
+            console.log(feedPage)
             setFeedPage(feedPage+1);
             clubAPI.getFeed(clubid,feedPage+1)
             .then((res)=>{
@@ -52,11 +53,13 @@ function club({clubid} : {clubid : number}){
                 }
                 setFeedData([...feedData, ...res.data])
                 setFeedLoading(false);
+                console.log("asdasdasd")
+                
             })
           .catch((e)=>console.log(e))
         }
-        console.log(feedData)
-      },[])
+        console.log(feedData, "asdasd")
+      },[feedLoading])
     
     return (
         <>
