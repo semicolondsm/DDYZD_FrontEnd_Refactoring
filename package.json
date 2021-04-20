@@ -41,7 +41,7 @@
       "^.+\\.(ts|tsx)$": "ts-jest"
     },
     "testMatch": [
-      "**/__tests__/*.(ts|tsx)"
+      "<rootDir>/src/__tests__/**/*.test.(ts|tsx)"
     ],
     "setupFilesAfterEnv": [
       "<rootDir>/jest.setup.ts"
