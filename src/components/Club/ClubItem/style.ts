@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import { color } from "@/src/styles";
-import { css } from "@emotion/react";
 
 export const ItemFontWrapper = styled.div`
   margin: 0 10px;
@@ -198,11 +197,3 @@ export const IntroIcon = styled.div`
   position: relative;
 `;
 
-export const FieldIconWrapper = styled.div`
-  position: absolute;
-  top: calc(100% + 15px);
-  right: 0;
-  & svg {
-    margin-left: 5px;
-  }
-`;

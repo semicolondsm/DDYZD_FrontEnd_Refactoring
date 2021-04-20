@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "dependencies": {
     "@emotion/css": "^11.1.3",
