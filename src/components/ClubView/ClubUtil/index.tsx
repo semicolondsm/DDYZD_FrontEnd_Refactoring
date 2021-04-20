@@ -2,16 +2,20 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import club from "@/src/libs/api/club";
 import { CreateRoomAndGetRoomId } from "@/src/libs/function/chat";
-
+import { IClubInfo } from '@/src/libs/intefaces/Club';
 import * as S from "./styles";
-function ClubUtil({ data }: { data: any }) {
+
+export const ClubUtil = ({ data }: { data: IClubInfo }) => {
     const router = useRouter();
 
-    const [info] = useState<any>(data);
+    const [info] = useState<IClubInfo>(data);
     const [follow, setFollow] = useState<boolean>(data.follow);
 
     const onFollow = () => {
-        if (!follow) {
+        if (!localStorage.getItem("accessToken")) {
+            alert("로그인을 해주세요 !");
+            return;
+        } else if (!follow) {
             club.postFollow(info.clubid).then(() => setFollow(true));
         } else {
             club.deleteFollow(info.clubid).then(() => setFollow(false));
