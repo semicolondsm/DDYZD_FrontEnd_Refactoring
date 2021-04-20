@@ -3,14 +3,16 @@ import { useSlider } from '@/src/libs/hook/useSlider';
 import {IFeedData} from '@/src/libs/intefaces/Feed'
 import next from '@/src/assets/images/next'
 import prev from '@/src/assets/images/prev'
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 interface Props{
     media : string[]
 }
 const FeedSlider : FC<Props> = ({ media }) => {
 
     const {sliderRef ,page, Prev, Next ,Swipe, TouchEnd, TouchMove} = useSlider()
-    
+    useEffect(()=>{
+        console.log(media);
+    },[media])
     return (
         <>
             <S.Slider>

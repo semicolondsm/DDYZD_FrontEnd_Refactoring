@@ -1,15 +1,18 @@
 import * as S from "../styles";
 import { IFeedData } from "@/src/libs/intefaces/Feed";
-import { useState } from "react";
+import { FC, useState } from "react";
 import FlagToggle from "../FlagToggle";
 import Link from "next/link";
 import dateFormat from "@/src/libs/function/dateFormat";
 import more from "@/src/assets/images/more";
 import pin from "@/src/assets/images/pin";
-import { useSlider } from "@/src/libs/hook/useSlider";
 import FeedSlider from "../FeedSlider";
+import { URLFormat } from "../../URLFormat";
 
-function FeedCard({ props }: { props: IFeedData }) {
+interface Props{
+    props : IFeedData;
+}
+const FeedCard : FC<Props> = ({ props }) => {
     const [flags, setFlags] = useState<number>(props.flags);
     const [state, setState1] = useState<boolean>(props.flag);
     const [originState, setOriginState] = useState<boolean>(props.flag);
@@ -37,18 +40,13 @@ function FeedCard({ props }: { props: IFeedData }) {
             <S.CardSection>
                 {/* 바꿀 곳 */}
                 <S.Content style={{ whiteSpace: "pre-wrap" }}>
-                    {props.content.split(/( |\n)/).map((val: string) => {
-                        const regex = /^(http(s)?:\/\/|www.)([a-z0-9\w]+\.*)+[a-z0-9]{2,4}([\/a-z0-9-%#?&=\w])+(\.[a-z0-9]{2,4}(\?[\/a-z0-9-%#?&=\w]+)*)*/gi;
-                        if (regex.exec(val) !== null)
-                            return (
-                                <a target="blank" href={val}>
-                                    {val}
-                                </a>
-                            );
-                        else return `${val}`;
-                    })}
+                    <URLFormat content={props.content}/>
                 </S.Content>
-                <FeedSlider media={props.media}/>
+                {
+                    props.media.length!==0 ?
+                        <FeedSlider media={props.media}/>
+                    : null
+                }
             </S.CardSection>
             <S.CardBottom>
                 <S.CardUtil>
