@@ -6,6 +6,7 @@ interface RecruitmentData {
     closeat : Date,
     startat : Date,
 }
+
 function getFormatDate(rdate : Date){
     let date = new Date(rdate);
     let year = new Date(date).getFullYear();
@@ -15,6 +16,7 @@ function getFormatDate(rdate : Date){
     day = day >= 10 ? day : '0' + day;
     return year + '-' + month + '-' + day;
 }
+
 function getDday(rstart : Date, rend : Date){
     let start = new Date(rstart);
     let end = new Date(rend);
@@ -22,7 +24,7 @@ function getDday(rstart : Date, rend : Date){
     return Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
 }
 
-function ClubRecruitment({club_id} : {club_id : number}){
+export const ClubRecruitment = ({club_id} : {club_id : number}) =>{
     const [data,setData] = useState<RecruitmentData>();
     useEffect(()=>{
         club.getRecruitment(club_id)
