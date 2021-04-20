@@ -24,11 +24,11 @@ export const ClubList : FC<Props> = ({ clubList }) => {
                             max={clubList.length}
                             now={i}
                             header={clubname}
-                            tag={clubtag}
-                            description={clubdescription}
-                            imgSrc={clubimage}
-                            banner={clubbanner}
-                            id={clubid}
+                            clubtag={clubtag}
+                            clubdescription={clubdescription}
+                            clubimage={clubimage}
+                            clubbanner={clubbanner}
+                            clubid={clubid}
                             clubrecruitment={clubrecruitment}
                         />
                     );
