@@ -120,12 +120,14 @@ export const Next = styled.button`
 `
 export const SliderState = styled.div`
     display: flex;
-    position: absolute;
-    top: 0;
+    margin-top: 10px;
+    position: relative;
+    top: 0%;
     left: 50%;
     transform: translateX(-50%);
     bottom: 0px;
     justify-content: center;
+    
 `
 export const StateButton = styled.div`
     width: 7px;
