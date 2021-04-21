@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef, MutableRefObject } from 'react';
-import feedId from '@/src/libs/api/feed';
 
 interface Return{
     sliderRef : MutableRefObject<HTMLDivElement>,
@@ -10,17 +9,17 @@ interface Return{
     TouchEnd : () => void,
     TouchMove : (e: React.TouchEvent) => void
 }
-export function useSlider() : Return {
+
+export function useSlider({media} : {media : string[]}) : Return {
     const [page, setPage] = useState<number>(0);
     const [start,setStart] = useState<number>(0);
     const [end, setEnd] = useState<number>(0);
-    const [media, setMedia] = useState<string[]>([]);
     const sliderRef = useRef<HTMLDivElement>(null);
     function Prev(){
         if(page>0) setPage(page-1);
-        
     }
     function Next(){
+        console.log(media)
        if(page<media.length-1) setPage(page+1);
     }
     function Swipe(e : React.TouchEvent){
@@ -37,10 +36,10 @@ export function useSlider() : Return {
     function TouchMove(e: React.TouchEvent){
         setEnd(e.touches[0].clientX);
     }
+
     useEffect(()=>{
         if(media.length!==0) sliderRef.current!.style.transform=`translateX(${100/media.length*-page}%)`;
     },[page])
-    useEffect(()=>{
-    },[])
+
     return { sliderRef, page, Prev, Next, Swipe, TouchEnd, TouchMove }
 }
