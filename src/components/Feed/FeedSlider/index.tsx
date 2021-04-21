@@ -7,12 +7,14 @@ import { FC, useEffect } from 'react';
 interface Props{
     media : string[]
 }
-const FeedSlider : FC<Props> = ({ media }) => {
+const FeedSlider = ({ media } : {media : string[]}) => {
 
-    const {sliderRef ,page, Prev, Next ,Swipe, TouchEnd, TouchMove} = useSlider()
+    const {sliderRef ,page, Prev, Next ,Swipe, TouchEnd, TouchMove} = useSlider({media})
+
     useEffect(()=>{
-        console.log(media);
-    },[media])
+        console.log(page)
+    },[page])
+    
     return (
         <>
             <S.Slider>
@@ -36,12 +38,18 @@ const FeedSlider : FC<Props> = ({ media }) => {
                         ></img>
                     ))}
                 </S.SliderImages>
-                <S.Prev onClick={Prev}>
-                    {prev}
-                </S.Prev>
-                <S.Next onClick={Next}>
-                    {next}
-                </S.Next>
+                {
+                    media.length !== 1 ?
+                    <>
+                        <S.Prev onClick={Prev}>
+                            {prev}
+                        </S.Prev>
+                        <S.Next onClick={Next}>
+                            {next}
+                        </S.Next>
+                    </>
+                    : null
+                }
             </S.Slider>
             <S.SliderState>
                 {media.map((_i, index) => (
