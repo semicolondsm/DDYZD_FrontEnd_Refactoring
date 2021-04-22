@@ -28,7 +28,7 @@ function club({clubid} : {clubid : number}){
     },[clubid])
     return (
         <>
-
+            <Header color="white"/>
             {
                 clubData ? 
                 <>
