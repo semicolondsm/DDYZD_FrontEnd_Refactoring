@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { IClubInfo } from "@/src/libs/intefaces/Club";
 import clubAPI from "@/src/libs/api/club";
 import Feed from '@/src/components/Feed';
+import SEO from "@/src/components/SEO";
 
 export const getServerSideProps = (context : GetServerSidePropsContext)  => {
     
@@ -28,10 +29,14 @@ function club({clubid} : {clubid : number}){
     },[clubid])
     return (
         <>
-
             {
                 clubData ? 
                 <>
+                    <SEO 
+                        title={clubData.clubname} 
+                        description={clubData.description} 
+                        image={clubData.clubimage}>
+                    </SEO>
                     <div style={{backgroundColor: "#ffffff"}}>
                         <ClubHeader data={clubData}></ClubHeader>
                         <ClubUtil data={clubData}></ClubUtil>
