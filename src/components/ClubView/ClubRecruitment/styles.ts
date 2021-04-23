@@ -12,6 +12,9 @@ export const Wrapper=styled.div`
             margin-top: 10px;
         }
     }
+    @media(max-width: 1415px){
+        margin: 15px auto 15px 0;
+    }
     
 `
 export const HeaderWrapper=styled.div`
