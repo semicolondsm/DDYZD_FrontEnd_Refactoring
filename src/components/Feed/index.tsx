@@ -3,7 +3,7 @@ import * as S from "./styles"
 import FeedSkeleton from "./FeedCard/FeedSkelton";
 import FeedLoading from "./FeedLoading/FeedLoading";
 import { IFeedData } from "@/src/libs/intefaces/Feed";
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 
 interface Props{
   data : IFeedData[];
@@ -15,13 +15,13 @@ const Feed : FC<Props> = ({data, loading}) => {
       <S.FeedList>
         {
           data.length !==0 ? 
-          data.map((i)=>(<FeedCard key={i["feedId"]} props={i}></FeedCard>))
-          : Array(30).fill(1).map((_i, index : number)=>(<FeedSkeleton key={index}></FeedSkeleton>))
+          data.map((i)=>(<FeedCard key={i.feedId} props={i}/>))
+          : Array(30).fill(1).map((_i, index : number)=>(<FeedSkeleton key={index}/>))
         }
       </S.FeedList>
       {
         loading ? 
-          <FeedLoading></FeedLoading>
+          <FeedLoading/>
         : null
       }
 
