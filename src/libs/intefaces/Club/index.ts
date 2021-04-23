@@ -30,3 +30,17 @@ export interface IClubData {
     clubbanner: string;
     clubrecruitment: boolean;
 }
+
+export interface IMemberData {
+	user_name: string[];
+	profile_image: null;
+	gcn: number[];
+	git: string;
+	loading: boolean;
+  }
+
+export interface IRecruitmentData {
+    major : string[],
+    closeat : Date,
+    startat : Date,
+}
