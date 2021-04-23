@@ -1,7 +1,7 @@
 import { useInfiniteScroll } from "@/src/libs/hook/useInfiniteScroll";
 import { IFeedData } from "@/src/libs/intefaces/Feed";
 import { GetServerSidePropsContext } from "next";
-import { ClubHeader, ClubRecruitment, ClubUtil } from '@/src/components/ClubView';
+import { ClubHeader, ClubRecruitment, ClubUtil, ClubMember } from '@/src/components/ClubView';
 import Header from '@/src/components/Header';
 import { useEffect, useState } from "react";
 import { IClubInfo } from "@/src/libs/intefaces/Club";
@@ -21,12 +21,14 @@ export const getServerSideProps = (context : GetServerSidePropsContext)  => {
 function club({clubid} : {clubid : number}){
     const [ clubData, setClubData ] = useState<IClubInfo>()
     const [data, loading] = useInfiniteScroll<IFeedData>((page)=>clubAPI.getFeed(clubid, page));
+
     useEffect(()=>{
         clubAPI.getInfo(clubid)
         .then((res)=>{
             setClubData(res.data);
         })
     },[clubid])
+    
     return (
         <>
             <Header color="white"/>
@@ -42,9 +44,14 @@ function club({clubid} : {clubid : number}){
                         <ClubHeader data={clubData}></ClubHeader>
                         <ClubUtil data={clubData}></ClubUtil>
                     </div>
+                    <div style={{width: "980px",display: "flex", backgroundColor: "#f5f5f5", margin: "0 auto"}}>
+                        <ClubMember data={clubData}/>
+                        <div>
+                            <ClubRecruitment club_id={clubid}></ClubRecruitment>
+                            <Feed loading={loading} data={data}></Feed>
+                        </div>
+                    </div>
                     
-                    <ClubRecruitment club_id={clubid}></ClubRecruitment>
-                    <Feed loading={loading} data={data}></Feed>
                 </>
                 : null
             }
