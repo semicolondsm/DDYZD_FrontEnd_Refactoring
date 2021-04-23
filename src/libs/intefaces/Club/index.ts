@@ -1,3 +1,8 @@
+export interface IClub{
+	club_id : number,
+	club_name : string,
+	club_image : string
+}
 export interface IClubInfo{
 	clubid : number;
 	clubname : string;
