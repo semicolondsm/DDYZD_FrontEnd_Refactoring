@@ -1,7 +1,12 @@
 import * as S from "./styles"
 import { IClubInfo } from '@/src/libs/intefaces/Club';
+import { FC } from "react";
 
-export const ClubHeader = ({data} : {data : IClubInfo}) => {
+interface Props {
+    data: IClubInfo
+}
+
+export const ClubHeader: FC<Props> = ({data}) => {
     return(
         <S.Wrapper>
             <S.BannerWrapper>
@@ -19,4 +24,3 @@ export const ClubHeader = ({data} : {data : IClubInfo}) => {
         </S.Wrapper>
     )
 }
-export default ClubHeader
