@@ -1,36 +1,23 @@
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import club from "@/src/libs/api/club";
 import * as S from "./styles"
-interface RecruitmentData {
-    major : string[],
-    closeat : Date,
-    startat : Date,
+import yyyymmddFormat from "@/src/libs/function/yyyymmddFormat";
+import getDday from "@/src/libs/function/getDday";
+import { IRecruitmentData } from "@/src/libs/intefaces/Club";
+
+interface Props {
+    club_id: number
 }
 
-function getFormatDate(rdate : Date){
-    let date = new Date(rdate);
-    let year = new Date(date).getFullYear();
-    let month : number | string = (1 + date.getMonth());
-    month = month >= 10 ? month : '0' + month;
-    let day : number | string = date.getDate();
-    day = day >= 10 ? day : '0' + day;
-    return year + '-' + month + '-' + day;
-}
+export const ClubRecruitment: FC<Props> = ({club_id}) =>{
+    const [data,setData] = useState<IRecruitmentData>();
 
-function getDday(rstart : Date, rend : Date){
-    let start = new Date(rstart);
-    let end = new Date(rend);
-    let gap = start.getTime() - end.getTime();
-    return Math.floor(gap / (1000 * 60 * 60 * 24)) * -1;
-}
-
-export const ClubRecruitment = ({club_id} : {club_id : number}) =>{
-    const [data,setData] = useState<RecruitmentData>();
     useEffect(()=>{
         club.getRecruitment(club_id)
         .then((res)=>setData(res.data))
         .catch((e)=>console.error(e))
     },[])
+
     return(
         <>
             {
@@ -48,9 +35,9 @@ export const ClubRecruitment = ({club_id} : {club_id : number}) =>{
                         </S.TagList>
                         <p>모집기간</p>
                         <S.RecuitmentDay>
-                            {data && getFormatDate(data.startat)}
+                            {data && yyyymmddFormat(data.startat)}
                             ~  
-                            {data && getFormatDate(data.closeat)} 
+                            {data && yyyymmddFormat(data.closeat)} 
                             ( {data && getDday(data.startat, data.closeat)}일간 )
                         </S.RecuitmentDay>
                     </div>
@@ -60,4 +47,3 @@ export const ClubRecruitment = ({club_id} : {club_id : number}) =>{
         </>
     )
 }
-export default ClubRecruitment;
