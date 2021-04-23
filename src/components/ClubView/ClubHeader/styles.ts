@@ -3,6 +3,7 @@ export const Wrapper=styled.div`
     position: relative;
 `
 export const BannerWrapper=styled.div`
+    position: relative;
     & > img{
         width: 100%;
         height: 300px;
@@ -21,17 +22,19 @@ export const BannerWrapper=styled.div`
     }
 `
 export const InfoWrapper=styled.div`
-
+    min-height: 80px;
+    position: relative;
 `
 export const Center=styled.div`
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: -72px;
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     & img{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, -50%);
         width: 60px;
         height: 60px;
         border-radius: 50%;
@@ -43,6 +46,7 @@ export const Center=styled.div`
     & p {
         font-size: 17px;
         border: none;
+        margin-top: 29px;
         display: inline-block;
         text-align: center;
         & input{
