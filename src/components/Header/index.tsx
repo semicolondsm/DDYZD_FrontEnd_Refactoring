@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as h from './styles'
+import * as S from './styles'
 import Link from "next/link"
 import ListIco from './ListIco';
 import ChatIco from './ChatIco';
@@ -24,16 +24,16 @@ function Header({color} : {color:string}){
 
     return(
         <div>
-        <h.Header>
-            <h.TopHeader state={scroll} color={color}>
+        <S.Header >
+            <S.TopHeader state={scroll} color={color}>
                 <Link href="/">
                     <a><img src={color=="white" ? "https://eungyeole.s3.ap-northeast-2.amazonaws.com/logoblack.png" : "https://eungyeole.s3.ap-northeast-2.amazonaws.com/logowhite.png"} width={25} height={25}></img>대동여지도</a>
                 </Link>
                 <Link href="/chat">
                   <a><ChatIco></ChatIco></a>
                 </Link>
-            </h.TopHeader>
-            <h.BottomHeader>
+            </S.TopHeader>
+            <S.BottomHeader>
                 <ul>
                     <div style={{cursor:"pointer"}}><ListIco></ListIco></div>
                     <h3 style={{cursor:"pointer"}}>전체 카테고리</h3>
@@ -51,8 +51,8 @@ function Header({color} : {color:string}){
                     <li>고객센터</li>
                     
                 </ul>
-            </h.BottomHeader>
-        </h.Header>
+            </S.BottomHeader>
+        </S.Header>
         </div>
     )
 }
