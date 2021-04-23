@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './styles'
 import Link from "next/link"
-import ListIco from './ListIco';
-import ChatIco from './ChatIco';
+import listIco from '../../assets/images/ListIco';
+import chatIco from '../../assets/images/chatIco';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@/src/modules/atom/user';
 
@@ -23,19 +23,19 @@ function Header({color} : {color:string}){
     }
 
     return(
-        <div>
+        <>
         <S.Header >
             <S.TopHeader state={scroll} color={color}>
                 <Link href="/">
                     <a><img src={color=="white" ? "https://eungyeole.s3.ap-northeast-2.amazonaws.com/logoblack.png" : "https://eungyeole.s3.ap-northeast-2.amazonaws.com/logowhite.png"} width={25} height={25}></img>대동여지도</a>
                 </Link>
                 <Link href="/chat">
-                  <a><ChatIco></ChatIco></a>
+                  <a>{chatIco}</a>
                 </Link>
             </S.TopHeader>
             <S.BottomHeader>
                 <ul>
-                    <div style={{cursor:"pointer"}}><ListIco></ListIco></div>
+                    <div style={{cursor:"pointer"}}>{listIco}</div>
                     <h3 style={{cursor:"pointer"}}>전체 카테고리</h3>
                     <li><Link href="/majorlist"><a>동아리 신청</a></Link></li>
                     <li onClick={()=>alert("개발중")}>동아리 물품 신청</li>
@@ -53,7 +53,7 @@ function Header({color} : {color:string}){
                 </ul>
             </S.BottomHeader>
         </S.Header>
-        </div>
+        </>
     )
 }
 
