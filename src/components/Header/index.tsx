@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import * as S from './styles'
 import Link from "next/link"
 import listIco from '../../assets/images/listIco';
@@ -6,9 +6,13 @@ import chatIco from '../../assets/images/chatIco';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@/src/modules/atom/user';
 
+interface Props {
+    color?: string
+}
+
 
 /**야야 */
-function Header({color} : {color:string}){
+const Header: FC<Props> = ({color = "white"}) => {
     const [scroll, setScroll] = useState<number>(0);
     const [ userData, setUserData ] = useRecoilState(userAtom);
 
