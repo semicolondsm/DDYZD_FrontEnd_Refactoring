@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as S from './styles'
 import Link from "next/link"
-import listIco from '../../assets/images/ListIco';
+import listIco from '../../assets/images/listIco';
 import chatIco from '../../assets/images/chatIco';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@/src/modules/atom/user';
