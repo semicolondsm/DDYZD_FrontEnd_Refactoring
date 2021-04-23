@@ -3,6 +3,7 @@ import * as S from "./styles";
 import club from "@/src/libs/api/club";
 import { IClubInfo, IMemberData } from "@/src/libs/intefaces/Club";
 import { MemberSkeleton } from "./MemberSkeleton";
+import Link from "next/link";
 
 interface Props{
   data: IClubInfo
@@ -30,13 +31,15 @@ export const ClubMember: FC<Props> = ({data}) => {
             {memberData.map((data, index) => {
               return (
                 (
-                  <S.Member key={index}>
-                    <S.Img src={data.profile_image} />
-                    <div>
-                      <S.MemberName>{data.user_name}</S.MemberName>
-                      <S.MemberRole>{index === 0 ? "동아리장" : "동아리원"}</S.MemberRole>
-                    </div>
-                  </S.Member>
+                  <Link href={`/user/${data.gcn}`}>
+                    <S.Member key={index}>
+                      <S.Img src={data.profile_image} />
+                      <div>
+                        <S.MemberName>{data.user_name}</S.MemberName>
+                        <S.MemberRole>{index === 0 ? "동아리장" : "동아리원"} ㆍ {data.gcn[0]}학년</S.MemberRole>
+                      </div>
+                    </S.Member>
+                  </Link>
                 )
               );
             })}
