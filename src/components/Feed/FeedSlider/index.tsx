@@ -7,9 +7,9 @@ import { FC, useEffect } from 'react';
 interface Props{
     media : string[]
 }
-const FeedSlider = ({ media } : {media : string[]}) => {
+const FeedSlider: FC<Props> = ({ media }) => {
 
-    const {sliderRef ,page, Prev, Next ,Swipe, TouchEnd, TouchMove} = useSlider({media})
+    const {sliderRef ,page, Prev, Next ,Swipe, TouchEnd, TouchMove} = useSlider(media)
 
     useEffect(()=>{
         console.log(page)
