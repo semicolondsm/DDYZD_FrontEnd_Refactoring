@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import { useRouter } from "next/router";
 import club from "@/src/libs/api/club";
 import { CreateRoomAndGetRoomId } from "@/src/libs/function/chat";
 import { IClubInfo } from '@/src/libs/intefaces/Club';
 import * as S from "./styles";
 
-export const ClubUtil = ({ data }: { data: IClubInfo }) => {
+interface Props {
+    data: IClubInfo
+}
+
+export const ClubUtil: FC<Props> = ({ data }) => {
     const router = useRouter();
 
     const [info] = useState<IClubInfo>(data);
@@ -57,4 +61,3 @@ export const ClubUtil = ({ data }: { data: IClubInfo }) => {
         </S.Wrapper>
     );
 }
-export default ClubUtil;
