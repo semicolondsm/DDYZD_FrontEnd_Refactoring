@@ -34,39 +34,47 @@ export const ClubRecruitment: FC<Props> = ({club_id}) =>{
 
     return(
         <>
-            {
-                data ? 
-                <S.Wrapper>
-                    <S.HeaderWrapper>
-                        동아리 지원
-                    </S.HeaderWrapper>
+            <S.Wrapper >
+                <S.HeaderWrapper>
+                    동아리 지원
+                </S.HeaderWrapper>
 
-                    <S.MajorWrapper>
-                        모집분야
-                        <S.TagList>
-                            {
-                                data?.major.map((i, index)=>(<span key={index}>{i}</span>))
-                            }
-                        </S.TagList>
-                    </S.MajorWrapper>
-                
-                    <S.DdayWapper>
-                        모집기간
-                        <S.Dday>
-                            <div style={{alignItems: "center", width: '20px', height: '20px', border: "1px solid black", borderRadius: "50%", marginRight: "10px"}}></div>
-                            {data && yyyymmddFormat(data.startat)}
-                            ~  
-                            {data && yyyymmddFormat(data.closeat)} 
-                            ( {data && getDday(data.startat, data.closeat)}일간 )
-                        </S.Dday>
-                    </S.DdayWapper>
+                {
+                    data ? 
+                    <>
+                        <S.MajorWrapper>
+                            모집분야
+                            <S.TagList>
+                                {
+                                    data?.major.map((i, index)=>(<span key={index}>{i}</span>))
+                                }
+                            </S.TagList>
+                        </S.MajorWrapper>
+                    
+                        <S.DdayWapper>
+                            모집기간
+                            <S.Dday>
+                                <div style={{alignItems: "center", width: '20px', height: '20px', border: "1px solid black", borderRadius: "50%", marginRight: "10px"}}></div>
+                                <div style={{}}>
+                                    <div>
+                                        {data && yyyymmddFormat(data.startat)}
+                                        ~  
+                                        {data && yyyymmddFormat(data.closeat)} 
+                                    </div>
+                                    <div>
+                                        ( {data && getDday(data.startat, data.closeat)}일간 )
+                                    </div>
+                                </div>
+                            </S.Dday>
+                        </S.DdayWapper>
+                        </>
+                    : <S.NoRecruiment>모집기간이 아닙니다</S.NoRecruiment>
+                }
 
-                    <S.ButtonWapper>
-                        <S.Button onClick={onSupport}>지원하기</S.Button>
-                    </S.ButtonWapper>
-                </S.Wrapper>
-                : null
-            }
+                <S.ButtonWapper>
+                    <S.Button onClick={onSupport} disabled={!data}>지원하기</S.Button>
+                </S.ButtonWapper>
+            </S.Wrapper>
         </>
     )
 }
