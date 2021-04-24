@@ -8,13 +8,14 @@ import { FC } from "react";
 interface Props{
   data : IFeedData[];
   loading : boolean;
+  last : boolean;
 }
-const Feed : FC<Props> = ({data, loading}) => {
+const Feed : FC<Props> = ({data, loading, last}) => {
   return(
     <>
       <S.FeedList>
         {
-          data.length !==0 ? 
+          data.length !==0 || last? 
           data.map((i)=>(<FeedCard key={i.feedId} props={i}/>))
           : Array(30).fill(1).map((_i, index : number)=>(<FeedSkeleton key={index}/>))
         }

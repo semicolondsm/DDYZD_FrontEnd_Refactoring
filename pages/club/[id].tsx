@@ -24,7 +24,7 @@ interface Props {
 }
 const club:FC<Props> = ({id})=>{
     const [ clubData, setClubData ] = useState<IClubInfo>()
-    const [data, loading] = useInfiniteScroll<IFeedData>((page)=>clubAPI.getFeed(id, page));
+    const [data, loading, last] = useInfiniteScroll<IFeedData>((page)=>clubAPI.getFeed(id, page));
 
     useEffect(()=>{
         clubAPI.getInfo(id)
@@ -50,7 +50,7 @@ const club:FC<Props> = ({id})=>{
                     </div>
                     <div style={{width: "1400px",display: "flex", backgroundColor: "#f5f5f5", margin: "0 auto"}}>
                         <ClubMember data={clubData}/>
-                        <Feed loading={loading} data={data}></Feed>
+                        <Feed loading={loading} data={data} last={last}></Feed>
                         <ClubRecruitment club_id={id}></ClubRecruitment>
                     </div>
                     

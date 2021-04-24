@@ -23,7 +23,7 @@ export const ClubList : FC<Props> = ({ clubList }) => {
                             key={clubid}
                             max={clubList.length}
                             now={i}
-                            header={clubname}
+                            clubname={clubname}
                             clubtag={clubtag}
                             clubdescription={clubdescription}
                             clubimage={clubimage}

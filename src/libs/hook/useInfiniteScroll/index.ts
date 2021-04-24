@@ -1,7 +1,7 @@
 import { AxiosPromise } from "axios";
 import { useCallback, useEffect, useState } from "react";
 
-export function useInfiniteScroll<T>(getData : (page : number) => AxiosPromise<any>): [T[], boolean]{
+export function useInfiniteScroll<T>(getData : (page : number) => AxiosPromise<any>): [T[], boolean, boolean]{
   const [data, setData] = useState<T[]>([]);
   const [page, setPage] = useState<number>(-1);
   const [last, setLast] = useState<boolean>(false);
@@ -40,5 +40,5 @@ export function useInfiniteScroll<T>(getData : (page : number) => AxiosPromise<a
   useEffect(()=>{
     if(last) window.removeEventListener("scroll",scrollEvent);
   },[last])
-  return [data, loading];
+  return [data, loading, last];
 }
