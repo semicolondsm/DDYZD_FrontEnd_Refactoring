@@ -21,7 +21,7 @@ export const FeedList = styled.ul`
         }
     }
     @media screen and (max-width: 1405px){
-        order: 1;
+        order: 2;
     }
 `
 export const CardHeader = styled.div`
