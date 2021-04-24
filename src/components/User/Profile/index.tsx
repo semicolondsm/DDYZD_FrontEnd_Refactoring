@@ -46,7 +46,7 @@ export const UserProfile : FC<Props> = ({github_url, bio, name, gcn, image_path,
                 {clubs.map((e, index)=>{ 
                     return(
                         <React.Fragment key={index}>
-                            <Link href={`/clubinfo?id=${e.club_id}`}>
+                            <Link href={`/club/${e.club_id}`}>
                                 <S.MClubProfileBox>
                                     <S.ClubProfile ><img src={`${process.env.NEXT_PUBLIC_BASEURL}/file/${e.club_image}`}></img></S.ClubProfile>
                                     <span>{e.club_name}</span>
