@@ -1,3 +1,4 @@
+import { IRecruitmentData } from "@/src/libs/intefaces/Club"
 import { color } from "@/src/styles"
 import styled from "@emotion/styled"
 
@@ -7,8 +8,8 @@ export const Wrapper=styled.aside`
     top: 77px;
     margin: 16px 0;
     flex-direction: column;
-    width: 350px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     box-shadow: 0px 5px 5px #00000029;
     border-radius: 2px;
     margin: 16px;  
@@ -17,19 +18,18 @@ export const Wrapper=styled.aside`
     order: 2;
     @media screen and (max-width: 1405px){
         position: unset !important ;
+        width: 630px;
     }
 `
 
 export const HeaderWrapper=styled.div`
     margin: 15px 20px;
     font-size: 16px;
-    height: 60px;
 `
 
 export const MajorWrapper=styled.div`
     font-size: 15px;
     margin-left: 20px;
-    height: 110px;
 `
 
 export const TagList=styled.div`
@@ -55,7 +55,6 @@ export const TagList=styled.div`
 
 export const DdayWapper=styled.div`
     margin-left: 20px;
-    height: 100px;
 `
 
 export const Dday = styled.div`
@@ -64,6 +63,15 @@ export const Dday = styled.div`
     align-items: center;
     margin-top: 7px;
     margin-bottom: 10px;
+`
+
+export const Ddate = styled.div`
+    flex-direction: column;
+`
+
+export const NoRecruiment = styled.div`
+    font-size: 14px;
+    margin-left: 20px;
 `
 
 export const ButtonWapper = styled.div`
@@ -78,7 +86,7 @@ export const Button = styled.button`
     background-color: ${color.purple300};
     color: white;
     cursor: pointer;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    &:disabled{
+        background-color: ${color.grey400}
+    }
 `
