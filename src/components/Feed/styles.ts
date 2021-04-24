@@ -20,6 +20,9 @@ export const FeedList = styled.ul`
             border: none;
         }
     }
+    @media screen and (max-width: 1405px){
+        order: 1;
+    }
 `
 export const CardHeader = styled.div`
     width: 630px;
