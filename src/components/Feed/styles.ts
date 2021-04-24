@@ -22,6 +22,7 @@ export const FeedList = styled.ul`
     }
 `
 export const CardHeader = styled.div`
+    width: 630px;
     display: flex;
     align-items: center;
     padding: 15px 25px;
