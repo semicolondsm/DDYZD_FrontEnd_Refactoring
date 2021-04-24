@@ -3,6 +3,7 @@ import styled from "@emotion/styled"
 
 export const Wrapper=styled.aside`
     background-color: #ffffff;
+    float: left;
     top: 77px;
     margin: 16px 0;
     flex-direction: column;
@@ -13,6 +14,10 @@ export const Wrapper=styled.aside`
     margin: 16px;  
     border-radius: 10px;
     position: sticky;
+    order: 2;
+    @media screen and (max-width: 1405px){
+        position: unset !important ;
+    }
 `
 
 export const HeaderWrapper=styled.div`
