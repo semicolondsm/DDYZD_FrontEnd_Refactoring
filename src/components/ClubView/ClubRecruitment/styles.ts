@@ -1,30 +1,30 @@
+import { color } from "@/src/styles"
 import styled from "@emotion/styled"
-export const Wrapper=styled.div`
-    & > div{
-        background: white;
-        max-width: 630px;
-        box-shadow: 0px 5px 5px #00000029;
-        border: 1px solid #F5F5F5;
-        margin-bottom: 35px;
-        padding: 20px;
-        margin: 15px auto;
-        & > input{
-            margin-top: 10px;
-        }
-    }
-    @media(max-width: 1415px){
-        margin: 15px auto 15px 0;
-    }
-    
+
+export const Wrapper=styled.aside`
+    background-color: #ffffff;
+    top: 77px;
+    margin: 16px 0;
+    flex-direction: column;
+    width: 350px;
+    height: 400px;
+    box-shadow: 0px 5px 5px #00000029;
+    border-radius: 2px;
+    margin: 16px;  
+    border-radius: 10px;
+    position: sticky;
 `
+
 export const HeaderWrapper=styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin: 15px 20px;
+    font-size: 16px;
+    height: 60px;
 `
-export const RecuitmentDay=styled.p`
-    font-size: 14px;
-    color: #333;
+
+export const MajorWrapper=styled.div`
+    font-size: 15px;
+    margin-left: 20px;
+    height: 110px;
 `
 
 export const TagList=styled.div`
@@ -41,5 +41,39 @@ export const TagList=styled.div`
         margin-right: 5px;
         margin-bottom: 10px;
         cursor: pointer;
+        &:hover{
+            background-color: ${color.purple200};
+            color: white;
+        }
     }
+`
+
+export const DdayWapper=styled.div`
+    margin-left: 20px;
+    height: 100px;
+`
+
+export const Dday = styled.div`
+    display: flex;
+    height: 25px;
+    align-items: center;
+    margin-top: 7px;
+    margin-bottom: 10px;
+`
+
+export const ButtonWapper = styled.div`
+    position: relative;
+`
+
+export const Button = styled.button`
+    width: 130px;
+    height: 40px;
+    border-radius: 15px;
+    outline: none;
+    background-color: ${color.purple300};
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 `
