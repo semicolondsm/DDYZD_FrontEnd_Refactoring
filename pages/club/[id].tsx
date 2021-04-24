@@ -48,10 +48,11 @@ const club:FC<Props> = ({id})=>{
                         <ClubHeader data={clubData}></ClubHeader>
                         <ClubUtil data={clubData}></ClubUtil>
                     </div>
-                    <div style={{width: "1400px",display: "flex", backgroundColor: "#f5f5f5", margin: "0 auto"}}>
+                    
+                    <div style={{width: "100vw",display: "flex", backgroundColor: "#f5f5f5", margin: "0 auto", flexWrap:"nowrap"}}>
                         <ClubMember data={clubData}/>
-                        <Feed loading={loading} data={data} last={last}></Feed>
                         <ClubRecruitment club_id={id}></ClubRecruitment>
+                        <Feed loading={loading} data={data} last={last}></Feed>
                     </div>
                     
                 </>
