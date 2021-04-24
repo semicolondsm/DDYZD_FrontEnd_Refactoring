@@ -14,6 +14,10 @@ export const ClubMemberContainer = styled.nav`
     margin: 16px;  
     border-radius: 10px;
     z-index: 100;
+    @media screen and (max-width: 1405px){
+        position: unset !important;
+        
+    }
 `;
 
 export const MemberHeader = styled.div`
