@@ -8,6 +8,7 @@ import { IClubInfo } from "@/src/libs/intefaces/Club";
 import clubAPI from "@/src/libs/api/club";
 import Feed from '@/src/components/Feed';
 import SEO from "@/src/components/SEO";
+import styled from '@emotion/styled'
 
 export const getServerSideProps = (context : GetServerSidePropsContext)  => {
     
@@ -18,6 +19,18 @@ export const getServerSideProps = (context : GetServerSidePropsContext)  => {
     };
 }
 
+const ClubContent = styled.div`
+    max-width: 1290px;
+    width: 100%;
+    display: flex;
+    background-color: #f5f5f5;
+    margin: 0 auto;
+    @media screen and (max-width: 1405px){
+        flex-direction: column;
+        align-items: center;
+    }
+
+`
 
 interface Props {
     id : number
@@ -49,11 +62,11 @@ const club:FC<Props> = ({id})=>{
                         <ClubUtil data={clubData}></ClubUtil>
                     </div>
                     
-                    <div style={{width: "100vw",display: "flex", backgroundColor: "#f5f5f5", margin: "0 auto", flexWrap:"nowrap"}}>
+                    <ClubContent>
                         <ClubMember data={clubData}/>
                         <ClubRecruitment club_id={id}></ClubRecruitment>
                         <Feed loading={loading} data={data} last={last}></Feed>
-                    </div>
+                    </ClubContent>
                     
                 </>
                 : null
