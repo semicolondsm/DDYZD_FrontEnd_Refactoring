@@ -7,16 +7,16 @@ export const ClubMemberContainer = styled.nav`
     top: 77px;
     margin: 16px 0;
     flex-direction: column;
-    width: 350px;
+    width: 300px;
     height: 400px;
     box-shadow: 0px 5px 5px #00000029;
     border-radius: 2px;
     margin: 16px;  
     border-radius: 10px;
-    z-index: 100;
     @media screen and (max-width: 1405px){
         position: unset !important;
-        
+        order: 1;
+        width: 630px;
     }
 `;
 
