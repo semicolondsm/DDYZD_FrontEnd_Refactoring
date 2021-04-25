@@ -17,6 +17,7 @@ export const ClubMemberContainer = styled.nav`
         position: unset !important;
         order: 1;
         width: 630px;
+        height: 200px;
     }
 `;
 
@@ -45,6 +46,10 @@ export const Member = styled.div`
 export const MemberContainer = styled.div`
     height: 350px;
     overflow: auto;
+    @media screen and (max-width: 1405px){
+        height: 150px;
+        overflow: auto;
+    }
 `;
 
 export const Img = styled.img`
