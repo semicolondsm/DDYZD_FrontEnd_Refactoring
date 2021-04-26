@@ -1,24 +1,26 @@
-import { IRecruitmentData } from "@/src/libs/intefaces/Club"
 import { color } from "@/src/styles"
 import styled from "@emotion/styled"
 
 export const Wrapper=styled.aside`
     background-color: #ffffff;
-    float: left;
     top: 77px;
     margin: 16px 0;
     flex-direction: column;
     width: 300px;
-    height: 300px;
+    min-height: 330px;
+    height: 100%;
     box-shadow: 0px 5px 5px #00000029;
     border-radius: 2px;
-    margin: 16px;  
+    margin: 16px;
     border-radius: 10px;
     position: sticky;
     order: 2;
+
     @media screen and (max-width: 1405px){
         position: unset !important ;
-        width: 630px;
+        max-width: 630px;
+        width: 100%;
+        display: flex;
     }
 `
 
@@ -61,7 +63,7 @@ export const Dday = styled.div`
     display: flex;
     height: 25px;
     align-items: center;
-    margin-top: 7px;
+    margin-top: 15px;
     margin-bottom: 10px;
 `
 
@@ -76,6 +78,14 @@ export const NoRecruiment = styled.div`
 
 export const ButtonWapper = styled.div`
     position: relative;
+    width: 100%;
+    height: 60px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    @media screen and (max-width: 1405px){
+        height: 20px;
+    }
 `
 
 export const Button = styled.button`
@@ -88,5 +98,11 @@ export const Button = styled.button`
     cursor: pointer;
     &:disabled{
         background-color: ${color.grey400}
+    }
+    @media screen and (max-width: 1405px){
+        //나중에 수정
+        position: relative;
+        left: 30%;
+        bottom: 50px;
     }
 `
