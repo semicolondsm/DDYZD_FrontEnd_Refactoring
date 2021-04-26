@@ -5,10 +5,12 @@ export const FeedList = styled.ul`
     list-style: none;
     padding: 0;
     margin: 0;
+    max-width: ${maxWidth};
+    width: 100%;
     & li{
         border-radius: 20px;
         background: white;
-        max-width: ${maxWidth};
+        width: 100%;
         box-shadow: 0px 5px 5px ${color.grey200};
         border: 1px solid ${color.grey100};
         margin-bottom: 35px;
@@ -25,7 +27,6 @@ export const FeedList = styled.ul`
     }
 `
 export const CardHeader = styled.div`
-    width: 630px;
     display: flex;
     align-items: center;
     padding: 15px 25px;
