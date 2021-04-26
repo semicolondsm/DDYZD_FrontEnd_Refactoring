@@ -8,7 +8,7 @@ interface IheaderCotainer{
 export const Header = styled.header`
     width:100%; 
     background-color:white; 
-    min-width: 1500px;
+    min-width: 1200px;
 `
 export const TopHeader = styled.div<IheaderCotainer>`
     height: 60px;
