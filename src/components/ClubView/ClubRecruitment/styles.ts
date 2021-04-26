@@ -20,6 +20,8 @@ export const Wrapper=styled.aside`
         position: unset !important ;
         max-width: 630px;
         width: 100%;
+        min-height: 200px;
+        height: 100%;
         display: flex;
     }
 `
@@ -84,7 +86,9 @@ export const ButtonWapper = styled.div`
     display: flex;
     justify-content: center;
     @media screen and (max-width: 1405px){
-        height: 20px;
+        height: 70px;
+        display: flex;
+        justify-content: center;
     }
 `
 
@@ -98,11 +102,5 @@ export const Button = styled.button`
     cursor: pointer;
     &:disabled{
         background-color: ${color.grey400}
-    }
-    @media screen and (max-width: 1405px){
-        //나중에 수정
-        position: relative;
-        left: 30%;
-        bottom: 50px;
     }
 `
