@@ -16,7 +16,8 @@ export const ClubMemberContainer = styled.nav`
     @media screen and (max-width: 1405px){
         position: unset !important;
         order: 1;
-        width: 630px;
+        max-width: 630px;
+        width: 100%;
         height: 200px;
     }
 `;
@@ -78,4 +79,8 @@ export const Dummy = styled.div`
     background: white;
     position: absolute;
     filter: blur(10px);
+    @media screen and (max-width: 1405px){
+        filter: none;
+        background-color:transparent !important;
+    }
 `;
