@@ -19,12 +19,13 @@ const Feed : FC<Props> = ({data, loading, last}) => {
           data.map((i)=>(<FeedCard key={i.feedId} props={i}/>))
           : Array(30).fill(1).map((_i, index : number)=>(<FeedSkeleton key={index}/>))
         }
+        {
+          loading ? 
+            <FeedLoading/>
+          : null
+        }
       </S.FeedList>
-      {
-        loading ? 
-          <FeedLoading/>
-        : null
-      }
+      
 
     </>
   )
