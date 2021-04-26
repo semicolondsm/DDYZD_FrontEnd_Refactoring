@@ -13,7 +13,6 @@ const rotate = keyframes`
 
 export const svg = styled.svg`
   animation: ${rotate} 2s linear infinite;
-  position: absolute;
   width: 35px;
   height: 35px;
   stroke: black;
