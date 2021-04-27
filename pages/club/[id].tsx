@@ -48,7 +48,7 @@ const club:FC<Props> = ({id})=>{
     
     return (
         <>
-            <Header color="white"/>
+            <Header/>
             {
                 clubData ? 
                 <>
