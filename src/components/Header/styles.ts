@@ -1,32 +1,33 @@
 import styled from '@emotion/styled';
 import {color} from '@/src/styles'
 
-interface IheaderCotainer{
+interface HeadProps{
     state: number,
     color: string,
 }
-export const Header = styled.header`
+export const Header = styled.header<HeadProps>`
     width:100%; 
     background-color:white; 
-    min-width: 1200px;
-`
-export const TopHeader = styled.div<IheaderCotainer>`
-    height: 60px;
-    position : ${(props)=>props.state>=60 ? "fixed" : null};
-    width : ${(props)=>props.state>=60 ? "100%" : null};
     top: 0;
     z-index: 99;  
     backdrop-filter: saturate(180%) blur(20px);
+    position : ${(props)=>props.state>=60 ? "fixed" : null};
+    width : ${(props)=>props.state>=60 ? "100%" : null};
     background-color: ${props => props.color==="white" ? "hsla(0,0%,100%,.75)" : color.purple300};
+    color:${(props)=>props.color=="white"?"black":props.color=="purple"?"white":"white"};
+`
+export const TopHeader = styled.div`
+    height: 55px;
     display:flex;
     align-items:center;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0px 15px;
     justify-content: space-between;
-    padding:0 250px;
     border-bottom:1px solid ${color.grey300};
     a{
         text-decoration:none;
         font-size:16px;
-        color:${(props)=>props.color=="white"?"black":props.color=="purple"?"white":"white"};
         display: flex;
         align-items: center;
     }
@@ -36,13 +37,14 @@ export const TopHeader = styled.div<IheaderCotainer>`
     }
     `
 
-export const BottomHeader = styled.div`
-    padding:0 250px;
+export const BottomHeader = styled.div<{state : number}>`
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0px 15px;
     height: 60px;
-    display:flex;
+    display: ${(props)=>props.state>=60 ? "none" : "flex"};
     align-items:center;
     justify-content:space-between;
-    background-color:white;
     ul{
         align-items:center;
         padding: 0;

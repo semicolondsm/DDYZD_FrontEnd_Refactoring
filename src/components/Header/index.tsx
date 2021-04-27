@@ -29,8 +29,8 @@ const Header: FC<Props> = ({color = "white"}) => {
     }
     return(
         <>
-        <S.Header >
-            <S.TopHeader state={scroll} color={color}>
+        <S.Header state={scroll} color={color}>
+            <S.TopHeader>
                 <Link href="/">
                     <a>{color==="white" ? logo : logowhite}대동여지도</a>
                 </Link>
@@ -38,7 +38,7 @@ const Header: FC<Props> = ({color = "white"}) => {
                   <a>{chatIco}</a>
                 </Link>
             </S.TopHeader>
-            <S.BottomHeader>
+            <S.BottomHeader state={scroll}>
                 <ul>
                     <div style={{cursor:"pointer"}}>{listIco}</div>
                     <h3 style={{cursor:"pointer"}}>전체 카테고리</h3>
