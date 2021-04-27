@@ -7,37 +7,28 @@ const RecruitmentSkeleton = () => {
         <S.Wrapper>
 
                 <S.HeaderWrapper>
-                    동아리 지원
+                    <Skeleton width={150} height={30}/>
                 </S.HeaderWrapper>
 
                 <S.MajorWrapper>
-                    모집분야
+                    <Skeleton width={150} height={30} style={{marginBottom: "10px"}}/>
                     <S.TagList>
                         {
-                            Array().map((i, index)=>(<span key={index}>{i}</span>))
+                            Array(5).fill(-1).map((_, index)=>(<Skeleton key={index} width={15} height={15} border-radius={30}/>))
                         }
                     </S.TagList>
                 </S.MajorWrapper>
             
                 <S.DdayWapper>
-                    모집기간
+                    <Skeleton width={50} height={23}/>
                     <S.Dday>
-                        <div style={{alignItems: "center", width: '20px', height: '20px', border: "1px solid black", borderRadius: "50%", marginRight: "10px"}}></div>
-                        <div style={{}}>
-                            <div>
-                                {data && yyyymmddFormat(data.startat)}
-                                ~  
-                                {data && yyyymmddFormat(data.closeat)} 
-                            </div>
-                            <div>
-                                ( {data && getDday(data.startat, data.closeat)}일간 )
-                            </div>
-                        </div>
+                        <Skeleton width={40} height={40} circle/>
+                        <Skeleton width={160} height={50} style={{marginLeft: "20px"}} />
                     </S.Dday>
                 </S.DdayWapper>
 
                 <S.ButtonWapper>
-                    <Skeleton width={130} height={40} border-radius={15} />
+                    <Skeleton width={130} height={40} border-radius={20} />
                 </S.ButtonWapper>
 
             </S.Wrapper>
