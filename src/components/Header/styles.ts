@@ -17,10 +17,7 @@ export const TopHeader = styled.div<IheaderCotainer>`
     top: 0;
     z-index: 99;  
     backdrop-filter: saturate(180%) blur(20px);
-    background-color: hsla(0,0%,100%,.75)!important;
-  
-    /* #350871" */
-    background-color: ${(props)=>props.color=="purple"?color.purple300:props.color=="white"?"white":color.purple300};
+    background-color: ${props => props.color==="white" ? "hsla(0,0%,100%,.75)" : color.purple300};
     display:flex;
     align-items:center;
     justify-content: space-between;
@@ -32,6 +29,10 @@ export const TopHeader = styled.div<IheaderCotainer>`
         color:${(props)=>props.color=="white"?"black":props.color=="purple"?"white":"white"};
         display: flex;
         align-items: center;
+    }
+    svg{
+        width: 25px;
+        height: 25px;
     }
     `
 
