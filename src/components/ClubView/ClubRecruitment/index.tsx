@@ -34,7 +34,8 @@ export const ClubRecruitment: FC<Props> = ({club_id}) =>{
 
     return(
         <>
-            <S.Wrapper >
+            <S.Wrapper>
+
                 <S.HeaderWrapper>
                     동아리 지원
                 </S.HeaderWrapper>
@@ -74,6 +75,7 @@ export const ClubRecruitment: FC<Props> = ({club_id}) =>{
                 <S.ButtonWapper>
                     <S.Button onClick={onSupport} disabled={!data}>지원하기</S.Button>
                 </S.ButtonWapper>
+
             </S.Wrapper>
         </>
     )
