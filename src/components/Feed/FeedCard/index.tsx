@@ -9,42 +9,41 @@ import pin from "@/src/assets/images/pin";
 import FeedSlider from "../FeedSlider";
 import { URLFormat } from "../../URLFormat";
 
-interface Props{
-    props : IFeedData;
-}
-const FeedCard : FC<Props> = ({ props }) => {
-    const [flags, setFlags] = useState<number>(props.flags);
-    const [state, setState1] = useState<boolean>(props.flag);
-    const [originState, setOriginState] = useState<boolean>(props.flag);
+interface Props extends IFeedData{};
+
+const FeedCard : FC<Props> = ({ flags, feedId, flag, profileImage, clubId, clubName, uploadAt, content, media }) => {
+    const [thisFlags, setFlags] = useState<number>(flags);
+    const [state, setState1] = useState<boolean>(flag);
+    const [originState, setOriginState] = useState<boolean>(flag);
     return (
         <li>
             <S.CardHeader>
-                <Link href={`club/${props.clubId}`}>
+                <Link href={`club/${clubId}`}>
                     <a>
                         <img
-                            src={`${process.env.NEXT_PUBLIC_BASEURL}/file/${props.profileImage}`}
+                            src={`${process.env.NEXT_PUBLIC_BASEURL}/file/${profileImage}`}
                         ></img>
                     </a>
                 </Link>
                 <S.CardHeaderContent>
                     <div style={{ display: "flex", alignItems: "center" }}>
                         <div>
-                            <strong>{props.clubName}</strong>
+                            <strong>{clubName}</strong>
                         </div>
                         {pin}
                     </div>
-                    <S.CreatedAt>{dateFormat(props.uploadAt)}</S.CreatedAt>
+                    <S.CreatedAt>{dateFormat(uploadAt)}</S.CreatedAt>
                 </S.CardHeaderContent>
                 {more}
             </S.CardHeader>
             <S.CardSection>
                 {/* 바꿀 곳 */}
                 <S.Content style={{ whiteSpace: "pre-wrap" }}>
-                    <URLFormat content={props.content}/>
+                    <URLFormat content={content}/>
                 </S.Content>
                 {
-                    props.media.length!==0 ?
-                        <FeedSlider media={props.media}/>
+                    media.length!==0 ?
+                        <FeedSlider media={media}/>
                     : null
                 }
             </S.CardSection>
@@ -53,7 +52,7 @@ const FeedCard : FC<Props> = ({ props }) => {
                     <FlagToggle
                         setFlags={setFlags}
                         flags={flags}
-                        feed_id={props.feedId}
+                        feed_id={feedId}
                         state={state}
                         setState={setState1}
                         originState={originState}
@@ -61,7 +60,7 @@ const FeedCard : FC<Props> = ({ props }) => {
                     ></FlagToggle>
                 </S.CardUtil>
                 <S.CardState>
-                    <div>FLAGS {flags}개</div>
+                    <div>FLAGS {thisFlags}개</div>
                 </S.CardState>
             </S.CardBottom>
         </li>

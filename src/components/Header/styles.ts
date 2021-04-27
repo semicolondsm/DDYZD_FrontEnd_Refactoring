@@ -1,47 +1,57 @@
 import styled from '@emotion/styled';
 import {color} from '@/src/styles'
 
-interface IheaderCotainer{
+interface HeadProps{
     state: number,
     color: string,
 }
-export const Header = styled.header`
+export const Header = styled.header<HeadProps>`
     width:100%; 
     background-color:white; 
-    min-width: 1200px;
-`
-export const TopHeader = styled.div<IheaderCotainer>`
-    height: 60px;
-    position : ${(props)=>props.state>=60 ? "fixed" : null};
-    width : ${(props)=>props.state>=60 ? "100%" : null};
     top: 0;
     z-index: 99;  
     backdrop-filter: saturate(180%) blur(20px);
-    background-color: hsla(0,0%,100%,.75)!important;
-  
-    /* #350871" */
-    background-color: ${(props)=>props.color=="purple"?color.purple300:props.color=="white"?"white":color.purple300};
+    position : ${(props)=>props.state>=60 ? "fixed" : null};
+    width : ${(props)=>props.state>=60 ? "100%" : null};
+    background-color: ${props => props.color==="white" ? "hsla(0,0%,100%,.75)" : color.purple300};
+`
+export const TopHeader = styled.div<Pick<HeadProps,"color">>`
+    height: 55px;
     display:flex;
     align-items:center;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0px 15px;
     justify-content: space-between;
-    padding:0 250px;
-    border-bottom:1px solid ${color.grey300};
+    //border-bottom:1px solid ${color.grey300};
+    ::after{
+        position: absolute;
+        width: 100%;
+        content: " ";
+        height: 1px;
+        background: ${color.grey300}
+    }
     a{
+        color:${(props)=>props.color=="white"?"black":props.color=="purple"?"white":"white"};
         text-decoration:none;
         font-size:16px;
-        color:${(props)=>props.color=="white"?"black":props.color=="purple"?"white":"white"};
         display: flex;
         align-items: center;
     }
+    svg{
+        width: 25px;
+        height: 25px;
+    }
     `
 
-export const BottomHeader = styled.div`
-    padding:0 250px;
+export const BottomHeader = styled.div<{state : number}>`
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0px 15px;
     height: 60px;
-    display:flex;
+    display: ${(props)=>props.state>=60 ? "none" : "flex"};
     align-items:center;
     justify-content:space-between;
-    background-color:white;
     ul{
         align-items:center;
         padding: 0;

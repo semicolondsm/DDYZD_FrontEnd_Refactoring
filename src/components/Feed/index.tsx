@@ -16,7 +16,7 @@ const Feed : FC<Props> = ({data, loading, last}) => {
       <S.FeedList>
         {
           data.length !==0 || last? 
-          data.map((i)=>(<FeedCard key={i.feedId} props={i}/>))
+          data.map((i)=>(<FeedCard key={i.feedId} {...i}/>))
           : Array(30).fill(1).map((_i, index : number)=>(<FeedSkeleton key={index}/>))
         }
         {

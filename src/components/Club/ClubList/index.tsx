@@ -9,27 +9,12 @@ export const ClubList : FC<Props> = ({ clubList }) => {
         <S.BodyWrapper>
             <S.Wrapper>
                 {clubList.map((value, i) => {
-                    const {
-                        clubname,
-                        clubtag,
-                        clubimage,
-                        clubdescription,
-                        clubbanner,
-                        clubid,
-                        clubrecruitment,
-                    } = value;
                     return (
                         <ClubItem 
-                            key={clubid}
+                            key={i} 
                             max={clubList.length}
                             now={i}
-                            clubname={clubname}
-                            clubtag={clubtag}
-                            clubdescription={clubdescription}
-                            clubimage={clubimage}
-                            clubbanner={clubbanner}
-                            clubid={clubid}
-                            clubrecruitment={clubrecruitment}
+                            {...value}
                         />
                     );
                 })}
