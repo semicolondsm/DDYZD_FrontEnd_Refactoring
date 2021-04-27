@@ -14,9 +14,8 @@ export const Header = styled.header<HeadProps>`
     position : ${(props)=>props.state>=60 ? "fixed" : null};
     width : ${(props)=>props.state>=60 ? "100%" : null};
     background-color: ${props => props.color==="white" ? "hsla(0,0%,100%,.75)" : color.purple300};
-    color:${(props)=>props.color=="white"?"black":props.color=="purple"?"white":"white"};
 `
-export const TopHeader = styled.div`
+export const TopHeader = styled.div<Pick<HeadProps,"color">>`
     height: 55px;
     display:flex;
     align-items:center;
@@ -24,8 +23,16 @@ export const TopHeader = styled.div`
     margin: 0 auto;
     padding: 0px 15px;
     justify-content: space-between;
-    border-bottom:1px solid ${color.grey300};
+    //border-bottom:1px solid ${color.grey300};
+    ::after{
+        position: absolute;
+        width: 100%;
+        content: " ";
+        height: 1px;
+        background: ${color.grey300}
+    }
     a{
+        color:${(props)=>props.color=="white"?"black":props.color=="purple"?"white":"white"};
         text-decoration:none;
         font-size:16px;
         display: flex;

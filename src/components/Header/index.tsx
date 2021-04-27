@@ -30,7 +30,7 @@ const Header: FC<Props> = ({color = "white"}) => {
     return(
         <>
         <S.Header state={scroll} color={color}>
-            <S.TopHeader>
+            <S.TopHeader color={color}>
                 <Link href="/">
                     <a>{color==="white" ? logo : logowhite}대동여지도</a>
                 </Link>
