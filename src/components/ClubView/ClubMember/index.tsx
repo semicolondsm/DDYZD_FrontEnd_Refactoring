@@ -6,14 +6,15 @@ import { MemberSkeleton } from "./MemberSkeleton";
 import Link from "next/link";
 
 interface Props{
-  data: IClubInfo
+  data: IClubInfo;
+  clubId : number,
 }
 
-export const ClubMember: FC<Props> = ({data}) => {
+export const ClubMember: FC<Props> = ({data, clubId}) => {
   const [memberData, setMemberData] = useState<IMemberData[]>(null);
 
   useEffect(() => {
-    club.getMembers(data.clubid).then((res) => {
+    club.getMembers(clubId).then((res) => {
       setMemberData(res.data);
     });
   }, []);
