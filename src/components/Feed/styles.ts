@@ -7,6 +7,7 @@ export const FeedList = styled.ul`
     margin: 0;
     max-width: ${maxWidth};
     width: 100%;
+    margin: 0 auto;
     & li{
         border-radius: 20px;
         background: white;
