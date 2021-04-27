@@ -28,6 +28,8 @@ export const TopHeader = styled.div<Pick<HeadProps,"color">>`
         position: absolute;
         width: 100%;
         content: " ";
+        left: 0;
+        top: 55px;
         height: 1px;
         background: ${color.grey300}
     }
