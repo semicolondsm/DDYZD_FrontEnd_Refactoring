@@ -5,6 +5,8 @@ import listIco from '../../assets/images/listIco';
 import chatIco from '../../assets/images/chatIco';
 import { useRecoilState } from 'recoil';
 import { userAtom } from '@/src/modules/atom/user';
+import logo from '@/src/assets/images/logo';
+import logowhite from '@/src/assets/images/logowhite';
 
 interface Props {
     color?: string
@@ -25,13 +27,12 @@ const Header: FC<Props> = ({color = "white"}) => {
         localStorage.clear()
         window.location.href="/"  
     }
-
     return(
         <>
         <S.Header >
             <S.TopHeader state={scroll} color={color}>
                 <Link href="/">
-                    <a><img src={color=="white" ? "https://eungyeole.s3.ap-northeast-2.amazonaws.com/logoblack.png" : "https://eungyeole.s3.ap-northeast-2.amazonaws.com/logowhite.png"} width={25} height={25}></img>대동여지도</a>
+                    <a>{color==="white" ? logo : logowhite}대동여지도</a>
                 </Link>
                 <Link href="/chat">
                   <a>{chatIco}</a>
