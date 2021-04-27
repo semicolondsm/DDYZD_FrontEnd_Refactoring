@@ -49,28 +49,23 @@ const club:FC<Props> = ({id})=>{
     return (
         <>
             <Header/>
-            {
-                clubData ? 
-                <>
-                    <SEO 
-                        title={clubData.clubname} 
-                        description={clubData.description} 
-                        image={clubData.clubimage}>
-                    </SEO>
-                    <div style={{backgroundColor: "#ffffff"}}>
-                        <ClubHeader data={clubData}></ClubHeader>
-                        <ClubUtil data={clubData}></ClubUtil>
-                    </div>
-                    
-                    <ClubContent>
-                        <ClubMember data={clubData}/>
-                        <ClubRecruitment club_id={id}></ClubRecruitment>
-                        <Feed loading={loading} data={data} last={last}></Feed>
-                    </ClubContent>
-                    
-                </>
-                : null
+            {clubData && 
+                <SEO 
+                    title={clubData.clubname} 
+                    description={clubData.description} 
+                    image={clubData.clubimage}>
+                </SEO>}
+            {clubData && 
+                <div style={{backgroundColor: "#ffffff"}}>
+                    <ClubHeader data={clubData}></ClubHeader>
+                    <ClubUtil data={clubData}></ClubUtil>
+                </div>
             }
+            <ClubContent>
+                <ClubMember clubId={id} data={clubData}/>
+                <ClubRecruitment club_id={id}></ClubRecruitment>
+                <Feed loading={loading} data={data} last={last}></Feed>
+            </ClubContent>
         </>
     )
 }
