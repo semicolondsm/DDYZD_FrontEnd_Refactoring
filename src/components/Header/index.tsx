@@ -7,6 +7,8 @@ import { useRecoilState } from 'recoil';
 import { userAtom } from '@/src/modules/atom/user';
 import logo from '@/src/assets/images/logo';
 import logowhite from '@/src/assets/images/logowhite';
+import { useRecoilValue } from 'recoil';
+import { userSelector } from '@/src/modules/selector/user';
 
 interface Props {
     color?: string
@@ -16,11 +18,11 @@ interface Props {
 /**야야 */
 const Header: FC<Props> = ({color = "white"}) => {
     const [scroll, setScroll] = useState<number>(0);
-    const [ userData, setUserData ] = useRecoilState(userAtom);
+    const [userData, setUserData] = useRecoilState(userSelector);
 
     useEffect(()=>{
         window.onscroll=()=>setScroll(window.scrollY);
-        localStorage.userCache && setUserData(JSON.parse(localStorage.userCache))
+        localStorage.userCache && setUserData(localStorage.userCache);
     },[])
     const logout =()=>{
         alert("로그아웃 되었습니다.")
@@ -50,7 +52,7 @@ const Header: FC<Props> = ({color = "white"}) => {
                 <ul>
                     {
                         userData?
-                            <><li><Link href={`/profile?id=${userData.gcn}`}><a>{userData?.name}</a></Link></li><li onClick={logout}>로그아웃</li></>
+                            <><li><Link href={`/profile?id=${userData.gcn}`}><a>{userData.name}</a></Link></li><li onClick={logout}>로그아웃</li></>
                         :<li onClick={()=>window.location.href="/login"}>로그인</li>
                     }
                     <li>고객센터</li>
