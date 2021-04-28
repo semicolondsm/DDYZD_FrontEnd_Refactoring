@@ -14,9 +14,11 @@ export const ClubMember: FC<Props> = ({data, clubId}) => {
   const [memberData, setMemberData] = useState<IMemberData[]>(null);
 
   useEffect(() => {
-    club.getMembers(clubId).then((res) => {
+    club.getMembers(clubId)
+    .then((res) => {
       setMemberData(res.data);
-    });
+    })
+    .catch((e)=>console.error(e))
   }, []);
 
   return (
