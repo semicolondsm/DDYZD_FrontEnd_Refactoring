@@ -7,7 +7,6 @@ export const Wrapper=styled.aside`
     margin: 16px 0;
     flex-direction: column;
     width: 300px;
-    min-height: 150px;
     height: 100%;
     box-shadow: 0px 5px 5px #00000029;
     border-radius: 2px;
@@ -20,7 +19,6 @@ export const Wrapper=styled.aside`
         position: unset !important ;
         max-width: 630px;
         width: 100%;
-        min-height: 200px;
         height: 100%;
         display: flex;
     }
