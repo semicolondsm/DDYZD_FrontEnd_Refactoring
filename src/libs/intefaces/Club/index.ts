@@ -49,3 +49,9 @@ export interface IRecruitmentData {
     closeat : Date,
     startat : Date,
 }
+
+export interface IClubPromotional {
+	name: string,
+	image: string,
+	profile: string,
+}
