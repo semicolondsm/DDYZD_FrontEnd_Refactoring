@@ -12,10 +12,20 @@ describe('dateFormat 테스트', ()=>{
         before1Minute.setMinutes(before1Minute.getMinutes()-1);
         expect(dateFormat(before1Minute)).toBe("1분 전");
     })
+    test("몇분전", ()=>{
+        const before1Minute=new Date();
+        before1Minute.setMinutes(before1Minute.getMinutes()-3);
+        expect(dateFormat(before1Minute)).toBe("3분 전");
+    })
     test("1시간 전", ()=>{
         const before1Hour=new Date();
         before1Hour.setHours(before1Hour.getHours()-1);
         expect(dateFormat(before1Hour)).toBe("1시간 전");
+    })
+    test("몇시간 전", ()=>{
+        const before1Hour=new Date();
+        before1Hour.setHours(before1Hour.getHours()-3);
+        expect(dateFormat(before1Hour)).toBe("3시간 전");
     })
     test("어제", ()=>{
         const before1Date=new Date();
