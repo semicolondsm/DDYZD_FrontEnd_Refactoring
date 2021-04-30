@@ -19,7 +19,6 @@ export function useSlider(media : string[]) : Return {
         if(page>0) setPage(page-1);
     }
     function Next(){
-        console.log(media)
        if(page<media.length-1) setPage(page+1);
     }
     function Swipe(e : React.TouchEvent){
