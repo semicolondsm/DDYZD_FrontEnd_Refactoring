@@ -6,6 +6,7 @@ import getDday from "@/src/libs/function/getDday";
 import { IRecruitmentData } from "@/src/libs/intefaces/Club";
 import { CreateRoomAndGetRoomId } from "@/src/libs/function/chat";
 import { useRouter } from "next/router"
+import RecruitmentSkeleton from "./RecruitmentSkeleton";
 
 interface Props {
     club_id: number
@@ -14,10 +15,15 @@ interface Props {
 export const ClubRecruitment: FC<Props> = ({club_id}) =>{
     const router = useRouter();
     const [data,setData] = useState<IRecruitmentData>();
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(()=>{
         club.getRecruitment(club_id)
-        .then((res)=>setData(res.data))
+        .then((res)=>{
+            setLoading(false)
+            setData(res.data);
+            setLoading(true)
+        })
         .catch((e)=>console.error(e))
     },[])
 
@@ -34,6 +40,8 @@ export const ClubRecruitment: FC<Props> = ({club_id}) =>{
 
     return(
         <>
+        {
+            loading ?
             <S.Wrapper>
 
                 <S.HeaderWrapper>
@@ -77,6 +85,9 @@ export const ClubRecruitment: FC<Props> = ({club_id}) =>{
                 </S.ButtonWapper>
 
             </S.Wrapper>
+            : <RecruitmentSkeleton />
+        }
         </>
+
     )
 }
