@@ -2,7 +2,7 @@ import * as S from "./styles";
 import Menu from "../Menu";
 import { useMainSlider } from "@/src/libs/hook/useMainSlider";
 import { useSlider } from "@/src/libs/hook/useSlider";
-import stopSlide from '@/src/assets/images/stopslide'
+import stopSlide from '@/src/assets/images/stopSlide'
 import startSlide from '@/src/assets/images/startSlide'
 
 export const MainSlide = () => {
