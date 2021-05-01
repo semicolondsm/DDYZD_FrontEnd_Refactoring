@@ -42,5 +42,4 @@ describe('dateFormat 테스트', ()=>{
         beforeFewDate.setDate(beforeFewDate.getDate()-15);
         expect(dateFormat(beforeFewDate)).toBe("3주 전");
     })
-    
 })
