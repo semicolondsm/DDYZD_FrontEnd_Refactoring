@@ -10,7 +10,8 @@ interface Return{
     TouchMove : (e: React.TouchEvent) => void
 }
 
-export function useSlider(media : string[]) : Return {
+export function useSlider<T>(media : T[], stop: boolean) : Return {
+
     const [page, setPage] = useState<number>(0);
     const [start,setStart] = useState<number>(0);
     const [end, setEnd] = useState<number>(0);
